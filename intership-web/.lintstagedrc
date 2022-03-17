@@ -1,0 +1,11 @@
+{
+  "src/**/*.+(js|jsx|ts|tsx)": [
+    "eslint"
+  ],
+  "*.css": [
+    "stylelint"
+  ],
+  "**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|less|scss|md|mdx)": [
+    "prettier"
+  ]
+}

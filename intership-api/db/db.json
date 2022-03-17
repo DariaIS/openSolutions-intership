@@ -1,0 +1,77 @@
+{
+  "user": {
+    "login": "user",
+    "password": "123"
+  },
+  "organization": [
+    {
+      "id": 1,
+      "name": "namefasd",
+      "address": "asdfasdf",
+      "INN": 1234356789
+    },
+    {
+      "id": 2,
+      "name": "Jagsd",
+      "address": "2-asdga",
+      "INN": "2345678904"
+    },
+    {
+      "id": 3,
+      "name": "234",
+      "address": "t234t",
+      "INN": 1234356789
+    }
+  ],
+  "division": [
+    {
+      "id": 1,
+      "id_organization": 1,
+      "name": "Division 1",
+      "phone": "123456"
+    },
+    {
+      "id": 6,
+      "id_organization": 2,
+      "name": "asdasha",
+      "phone": "+4353452"
+    }
+  ],
+  "employee": [
+    {
+      "id": 2,
+      "id_division": 2,
+      "FIO": "Unknown1 Unknown Unknown",
+      "address": "street 123",
+      "position": "Position 2"
+    },
+    {
+      "id": 3,
+      "id_division": 2,
+      "FIO": "ZXC ASD",
+      "address": "street qwe",
+      "position": "position 432"
+    },
+    {
+      "id": 4,
+      "id_division": 3,
+      "FIO": "erik cartman",
+      "address": "23 grove street",
+      "position": "cj"
+    },
+    {
+      "id": 4,
+      "id_division": 1,
+      "FIO": "Jerg",
+      "address": "2-wergerga",
+      "position": "position of thee highest order"
+    },
+    {
+      "id": 5,
+      "id_division": 1,
+      "FIO": "wfqw",
+      "address": "fq",
+      "position": "1"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "removeComments": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "ESNext", "dom"],
+    "jsx": "react",
+    "allowJs": true,
+    "declaration": false,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "strict": true,
+    "noImplicitAny": false,
+    // "noImplicitAny": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": { "postCssOptions": { "useConfig": true }, "customMatcher": "/.module.s?css$/" }
+      }
+    ],
+    "paths": {
+      "Src/*": ["./src/*"],
+      "Common/Components/*": ["./src/components/*"],
+      "Common/Components": ["./src/components"],
+      "Common/UI/*": ["./src/UIElements/*"],
+      "Common/UI": ["./src/UIElements"],
+      "Common/Models/*": ["./src/models/*"],
+      "Common/Models": ["./src/models"],
+      "Common/Pages/*": ["./src/pages/*"],
+      "Common/Pages": ["./src/pages"],
+      "Common/Hooks/*": ["./src/hooks/*"],
+      "Common/Hooks": ["./src/hooks"],
+      "Common/Utils/*": ["./src/utils/*"],
+      "Common/Utils": ["./src/utils"],
+      "Common/Api/*": ["./src/Api/*"],
+      "Common/Api": ["./src/Api"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "typeRoots": ["node_modules/@types", "./src/@types"]
+}

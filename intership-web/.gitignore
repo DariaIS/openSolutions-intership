@@ -1,0 +1,9 @@
+/node_modules
+/build
+/.git
+/.vscode
+/.idea
+*.log
+.eslintcache
+.env.local
+.env.*.local

@@ -1,0 +1,6 @@
+#/intership-api
+/web-finished
+/node_modules
+/dist
+/build
+.DS_Store

@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+config
+*.log
+.eslintrc.js
+babel.config.js
+postcss.config.js
+prettier.config.js
