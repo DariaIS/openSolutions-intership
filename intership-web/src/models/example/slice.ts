@@ -12,15 +12,22 @@ export const userSlice: Slice<ISlice> = createSlice({
   name: 'store',
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      state.isLoading = false;
+    // setUser: (state, action) => {
+    //   state.isLoading = false;
+    //   state.user = action.payload;
+    // },
+    // getUser: (state) => {
+    //   state.isLoading = true;
+    // },
+    login: (state, action) => {
       state.user = action.payload;
     },
-    getUser: (state) => {
-      state.isLoading = true;
+    logout: (state) => {
+      state.user = null;
     },
   },
 });
 
-export const { setUser, getUser } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
+export const selectUser = (state) => state.store.user;
 export default userSlice.reducer;

@@ -7,7 +7,8 @@ import getUserSaga from './example/sagas';
 const saga = createSagaMiddleware();
 const store = configureStore({
   reducer: {
-    certs: userReducer,
+    // certs: userReducer,
+    user: userReducer,
   },
   middleware: [saga],
 });

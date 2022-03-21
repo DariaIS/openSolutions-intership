@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from "react-redux";
+import store from "./models/store";
 
 import './normalize.css';
 import './index.css';
@@ -8,10 +10,12 @@ import './variables.scss';
 import { App } from './App';
 
 ReactDOM.render(
-  <Router>
+  <Provider store={ store }>
     <React.StrictMode>
-      <App />
+      <Router>
+          <App />
+      </Router>
     </React.StrictMode>
-  </Router>,
+  </Provider>,
   document.querySelector('#root'),
 );
