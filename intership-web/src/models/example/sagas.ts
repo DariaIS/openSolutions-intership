@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { getUser, setUser } from './slice';
+import { login, logout } from './slice';
 
 type User = {
   someProp: any;
@@ -15,14 +15,14 @@ function* certsFetch() {
         return data.data.someProp;
       });
     });
-    yield put(setUser(user));
+    yield put(login(user));
   } catch (error) {
     console.log(error);
   }
 }
 
 function* getUserSaga() {
-  yield takeEvery(getUser, certsFetch);
+  yield takeEvery(logout, certsFetch);
 }
 
 export default getUserSaga;
