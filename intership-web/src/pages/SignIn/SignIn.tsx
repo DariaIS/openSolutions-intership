@@ -6,13 +6,18 @@ import { Input } from 'Common/UI/Input';
 import { useSignIn } from './hooks/useSignIn';
 
 export const SignIn: React.FC = () => {
-  const { handleSignIn, handleChangeSingIn, name, password, error } = useSignIn({});
+  const { handleSignIn, handleChangeSingIn, login, password, error } = useSignIn({});
 
   return (
     <div>
       <form>
-        <Input type="text" value={name} onChange={handleChangeSingIn} placeholder="login" />
-        <Input type="text" value={password} onChange={handleChangeSingIn} placeholder="password" />
+        <Input type="text" value={login} onChange={handleChangeSingIn} placeholder="login" />
+        <Input
+          type="password"
+          value={password}
+          onChange={handleChangeSingIn}
+          placeholder="password"
+        />
         <Button onClick={handleSignIn}>Sign In</Button>
       </form>
       {error.length > 0 && <span>{error}</span>}

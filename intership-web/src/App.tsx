@@ -9,10 +9,9 @@ import s from './App.module.scss';
 export const App: React.FC = () => {
   return (
     <div className={s.app}>
-      <Navigation />
+      {/* <Navigation /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<SignIn />} />
         <Route path="/counter" element={<CounterPage />} />
         <Route path="/todos" element={<TodosPage />} />
       </Routes>

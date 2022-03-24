@@ -1,7 +1,8 @@
 import { ChangeEventHandler, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { login } from '../../../models/example/slice';
+import { authorize } from '../../../models/example/slice';
+import { fetchSignIn } from '../../../models/asyncActions/signin';
 
 type Props = {
   anyProp?: any;
@@ -9,29 +10,23 @@ type Props = {
 
 export const useSignIn = (props: Props) => {
   const [error, setError] = useState('');
-  const [name, setName] = useState('');
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-
-  const dispatch = useDispatch();
 
   const handleChangeSingIn: ChangeEventHandler<HTMLInputElement> = ({
     target: { value, placeholder },
   }) => {
-    if (placeholder === 'login') setName(value);
+    if (placeholder === 'login') setLogin(value);
     else setPassword(value);
   };
 
+  const dispatch = useDispatch();
+
   const handleSignIn = () => {
-    if (!name.trim() || !password.trim()) setError('too empty =(');
+    if (!login.trim() || !password.trim()) setError('too empty =(');
     else {
       console.log('added');
-      dispatch(
-        login({
-          name,
-          password,
-          loggedIn: true,
-        }),
-      );
+      dispatch(fetchSignIn(login, password));
     }
   };
 
@@ -39,7 +34,7 @@ export const useSignIn = (props: Props) => {
     handleChangeSingIn,
     handleSignIn,
     error,
-    name,
+    login,
     password,
   };
 };

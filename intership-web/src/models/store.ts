@@ -1,18 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
+// import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 
 import userReducer from './example/slice';
-import getUserSaga from './example/sagas';
+// import getUserSaga from './example/sagas';
 
-const saga = createSagaMiddleware();
+// const saga = createSagaMiddleware();
+
 const store = configureStore({
   reducer: {
     // certs: userReducer,
     user: userReducer,
   },
-  middleware: [saga],
+  middleware: [thunk],
 });
-saga.run(getUserSaga);
+// saga.run(getUserSaga);
 
 export default store;
 export type RootState = ReturnType<typeof store.getState>;
