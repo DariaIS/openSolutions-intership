@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { authorize, logout } from './slice';
+import { authorize, logout } from '../authorize/slice';
 
 type User = {
   login: string;

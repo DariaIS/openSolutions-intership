@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
-import userReducer from './example/slice';
+import userReducer from './authorize/slice';
 // import getUserSaga from './example/sagas';
 
 // const saga = createSagaMiddleware();

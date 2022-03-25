@@ -1,8 +1,8 @@
 import { ChangeEventHandler, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { authorize } from '../../../models/example/slice';
-import { fetchSignIn } from '../../../models/asyncActions/signin';
+import { authorize } from '../../../models/authorize/slice';
+import { fetchSignIn } from '../../../models/authorize/action';
 
 type Props = {
   anyProp?: any;
@@ -25,7 +25,6 @@ export const useSignIn = (props: Props) => {
   const handleSignIn = () => {
     if (!login.trim() || !password.trim()) setError('too empty =(');
     else {
-      console.log('added');
       dispatch(fetchSignIn(login, password));
     }
   };

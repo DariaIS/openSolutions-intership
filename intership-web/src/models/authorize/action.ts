@@ -1,4 +1,4 @@
-import { authorize } from '../example/slice';
+import { authorize } from './slice';
 
 export const fetchSignIn = (login, password) => {
   

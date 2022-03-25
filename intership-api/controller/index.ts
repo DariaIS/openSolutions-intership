@@ -32,7 +32,6 @@ export const Controller = {
       let user = await DbModel.getUser();
       let form = new Formidable.IncomingForm();
       form.parse(req, (err, fields: any) => {
-        console.log(fields.loginData)
         let { login, password } = fields.loginData;
         if (login === user.login && password === user.password) {
           res.json({ isLogin: true });

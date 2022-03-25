@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Button } from 'Common/UI/Button';
 import { useDispatch } from 'react-redux';
-import { logout } from 'src/models/example/slice';
+import { logout } from 'Src/models/authorize/slice';
 
 export const Navigation: React.FC = () => {
   const dispatch = useDispatch();
