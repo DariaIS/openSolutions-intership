@@ -58,6 +58,7 @@ module.exports = {
     'no-use-extend-native',
   ],
   rules: {
+    'prettier/prettier': 0,
     'react/prop-types': 0,
     'react/destructuring-assignment': 0,
     'react/static-property-placement': 0,
