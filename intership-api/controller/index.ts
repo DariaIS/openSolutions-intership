@@ -43,6 +43,7 @@ export const Controller = {
     CreateOrganization: async (req: Request, res: Response) => {
       let form = new Formidable.IncomingForm();
       form.parse(req, async (err, fields: any) => {
+        console.log(req);
         let { name, address, INN } = fields;
         let callback = await DbModel.addOrganization({
           id: 111,
