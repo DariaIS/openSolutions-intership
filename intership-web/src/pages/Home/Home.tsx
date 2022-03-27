@@ -8,7 +8,6 @@ import { selectUser } from '../../models/authorize/slice';
 
 export const HomePage: React.FC = () => {
   const user = useSelector(selectUser);
-  console.log(user);
 
   return <div>{user.isLogin ? <Navigation /> : <SignIn />}</div>;
 };

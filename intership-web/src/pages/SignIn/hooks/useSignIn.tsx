@@ -25,7 +25,7 @@ export const useSignIn = (props: Props) => {
   const handleSignIn = () => {
     if (!login.trim() || !password.trim()) setError('too empty =(');
     else {
-      dispatch(fetchSignIn(login, password));
+      dispatch(fetchSignIn(login, password, setError));
     }
   };
 

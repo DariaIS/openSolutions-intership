@@ -5,7 +5,7 @@ type ISlice = { isLoading: boolean; user: any };
 
 const initialState = {
   userData: null,
-  isLogin: false,
+  isLogin: false
 };
 
 export const userSlice = createSlice({
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.userData = null;
       state.isLogin = false;
-    },
+    }
   },
 });
 
