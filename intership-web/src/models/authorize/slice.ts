@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, Slice } from '@reduxjs/toolkit';
 
-type ISlice = { isLoading: boolean; user: any };
+type IUserSlice = { userData: any, isLogin: boolean };
 
 const initialState = {
   userData: null,
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
-  name: 'store',
+  name: 'user',
   initialState,
   reducers: {
     authorize: (state, action) => {
