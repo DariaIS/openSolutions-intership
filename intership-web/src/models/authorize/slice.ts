@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type IUserData = { 
-  name: string,
-  password: string
+import { IUserData } from './IUserData';
+
+type IUserState = { 
+  userData: IUserData[], 
+  isLogin: boolean 
 };
-
-type IUserState = { userData: IUserData[], isLogin: boolean };
 
 const initialState: IUserState = {
   userData: [],
@@ -17,8 +17,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    authorize: (state, action) => {
-      state.userData = action.payload;
+    authorize: (state, action: PayloadAction<IUserData>) => {
+      state.userData = [action.payload];
       state.isLogin = true;
     },
     logout: (state) => {

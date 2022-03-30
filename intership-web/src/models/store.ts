@@ -1,17 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
 import userReducer from './authorize/slice';
 import organizationsReducer from './organizations/slice';
-import { loadState, saveState } from './localstorage';
-// import getUserSaga from './example/sagas';
 
-// const saga = createSagaMiddleware();
+import { loadState, saveState } from './localstorage';
 
 const store = configureStore({
   reducer: {
-    // certs: userReducer,
     user: userReducer,
     organizations: organizationsReducer
   },
@@ -24,7 +20,6 @@ store.subscribe(() => {
     user: store.getState().user
   });
 });
-// saga.run(getUserSaga);
 
 export default store;
 export type RootState = ReturnType<typeof store.getState>;

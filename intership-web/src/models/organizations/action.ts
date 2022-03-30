@@ -1,20 +1,19 @@
-export const fetchOrganizations = () => {
-  
-    return (dispatch) => {
-      fetch('http://127.0.0.1:8080/organization', {
-        headers:  {
-          'Content-type': 'application/json',
-          'Accept': 'application/json',
-        },
-        method: "GET",
-      })
-        .then((Response) => Response.json())
-        .then((json) => {
-            console.log(json);
-            dispatch(json);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-  };
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { IOrganizations } from './IOrganizations'
+
+export const fetchOrganizations = createAsyncThunk(
+  'organizations/fetchall',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get<IOrganizations[]>('http://127.0.0.1:8080/organization');
+      return response.data;
+    } catch (error) {
+      let errorMessage = '';
+      if (error instanceof Error)
+        errorMessage = error.message
+
+      return thunkAPI.rejectWithValue(errorMessage)
+    }
+  }
+)

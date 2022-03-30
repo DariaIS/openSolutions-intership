@@ -1,3 +1,4 @@
+import { IUserData } from './IUserData';
 import { authorize } from './slice';
 
 export const fetchSignIn = (login, password, setError) => {

@@ -1,13 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Navigation } from 'Src/components/Navigation';
-import { SignIn } from '../SignIn';
 
-import { selectUser } from '../../models/authorize/slice';
+import { selectOrganizations } from '../../models/organizations/slice';
+import { fetchOrganizations } from '../../models/organizations/action';
 
 export const Organizations: React.FC = () => {
-  const user = useSelector(selectUser);
+  const { organizations, isLoading, error } = useSelector(selectOrganizations);
+  const dispatch = useDispatch();
 
-  return <div>{user.isLogin ? <Navigation /> : <SignIn />}</div>;
+  useEffect(() => {
+    dispatch(fetchOrganizations());
+  }, []);
+
+  return (
+  <div>
+    <Navigation/>
+    {isLoading && <h1>Loading...</h1>}
+    {error && <h1>{error}</h1>}
+    {JSON.stringify(organizations, null, 2)}
+  </div>
+  );
 };
