@@ -1,20 +1,28 @@
-import { createSlice, Slice } from '@reduxjs/toolkit';
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type IOrganizationsSlice = { organizationsList: any };
-
-const initialState = {
-  organizationsList: ['']
+type IOrganizationsList = { 
+  id: number,
+  name: string,
+  address: string,
+  INN: string
 };
 
-export const organizationsSlice: Slice<IOrganizationsSlice> = createSlice({
+type IOrganizationsState = { organizationsList: IOrganizationsList[] };
+
+const initialState: IOrganizationsState = {
+  organizationsList: []
+};
+
+export const organizationsSlice = createSlice({
   name: 'organizations',
   initialState,
   reducers: {
-    addOrganization: (state, action) => {
-      state.organizationsList.push(action.payload);
+    addOrganization: (state, action: PayloadAction<IOrganizationsList>) => {
+      state.organizationsList = [...state.organizationsList, action.payload];
     },
     removeOrganization: (state, action) => {
-        state.organizationsList.splice(action.payload, 1);
+      state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
     }
   },
 });

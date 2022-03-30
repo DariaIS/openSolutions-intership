@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
 import userReducer from './authorize/slice';
+import organizationsReducer from './organizations/slice';
 import { loadState, saveState } from './localstorage';
 // import getUserSaga from './example/sagas';
 
@@ -12,6 +13,7 @@ const store = configureStore({
   reducer: {
     // certs: userReducer,
     user: userReducer,
+    organizations: organizationsReducer
   },
   middleware: [thunk],
   preloadedState: loadState()

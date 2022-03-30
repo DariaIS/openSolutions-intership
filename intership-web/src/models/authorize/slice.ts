@@ -1,10 +1,15 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, Slice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-type IUserSlice = { userData: any, isLogin: boolean };
+type IUserData = { 
+  name: string,
+  password: string
+};
 
-const initialState = {
-  userData: null,
+type IUserState = { userData: IUserData[], isLogin: boolean };
+
+const initialState: IUserState = {
+  userData: [],
   isLogin: false
 };
 
@@ -17,7 +22,7 @@ export const userSlice = createSlice({
       state.isLogin = true;
     },
     logout: (state) => {
-      state.userData = null;
+      state.userData = [];
       state.isLogin = false;
     }
   },
