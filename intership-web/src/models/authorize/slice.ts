@@ -1,25 +1,30 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, Slice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type ISlice = { isLoading: boolean; user: any };
+import { IUserData } from './IUserData';
 
-const initialState = {
-  userData: null,
-  isLogin: false,
+type IUserState = { 
+  userData: IUserData[], 
+  isLogin: boolean 
+};
+
+const initialState: IUserState = {
+  userData: [],
+  isLogin: false
 };
 
 export const userSlice = createSlice({
-  name: 'store',
+  name: 'user',
   initialState,
   reducers: {
-    authorize: (state, action) => {
-      state.userData = action.payload;
+    authorize: (state, action: PayloadAction<IUserData>) => {
+      state.userData = [action.payload];
       state.isLogin = true;
     },
     logout: (state) => {
-      state.userData = null;
+      state.userData = [];
       state.isLogin = false;
-    },
+    }
   },
 });
 

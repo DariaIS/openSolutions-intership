@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { HomePage, SignIn, CounterPage, TodosPage } from 'Common/Pages';
-import { Navigation } from 'Common/Components/Navigation';
+import { Home, CounterPage, TodosPage, Organizations } from 'Common/Pages';
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 import s from './App.module.scss';
 
@@ -11,9 +11,10 @@ export const App: React.FC = () => {
     <div className={s.app}>
       {/* <Navigation /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/counter" element={<CounterPage />} />
-        <Route path="/todos" element={<TodosPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path='/organizations' element={<ProtectedRoute><Organizations/></ProtectedRoute>}/>
+        <Route path='/counter' element={<ProtectedRoute><CounterPage/></ProtectedRoute>}/>
+        <Route path='/todos' element={<ProtectedRoute><TodosPage/></ProtectedRoute>}/>
       </Routes>
     </div>
   );

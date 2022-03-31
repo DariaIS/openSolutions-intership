@@ -16,16 +16,22 @@ export const useSignIn = (props: Props) => {
   const handleChangeSingIn: ChangeEventHandler<HTMLInputElement> = ({
     target: { value, placeholder },
   }) => {
-    if (placeholder === 'login') setLogin(value);
-    else setPassword(value);
+    if (placeholder === 'login') {
+      setLogin(value);
+    }
+    else {
+      setPassword(value);
+    }
   };
 
   const dispatch = useDispatch();
 
   const handleSignIn = () => {
-    if (!login.trim() || !password.trim()) setError('too empty =(');
+    if (!login.trim() || !password.trim()) {
+      setError('too empty =(');
+    }
     else {
-      dispatch(fetchSignIn(login, password));
+      dispatch(fetchSignIn(login, password, setError));
     }
   };
 

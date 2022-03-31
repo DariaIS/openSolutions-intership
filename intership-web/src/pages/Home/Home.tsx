@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate } from "react-router-dom";
 
-import { Navigation } from 'Src/components/Navigation';
 import { SignIn } from '../SignIn';
 
 import { selectUser } from '../../models/authorize/slice';
 
-export const HomePage: React.FC = () => {
+export const Home: React.FC = () => {
   const user = useSelector(selectUser);
-  console.log(user);
 
-  return <div>{user.isLogin ? <Navigation /> : <SignIn />}</div>;
+  return <div>{user.isLogin ? <Navigate to="/organizations" replace /> : <SignIn />}</div>;
 };
