@@ -1,13 +1,13 @@
 /* eslint-disable no-extra-semi */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IOrganizations } from './IOrganizations'
+import { IOrganization } from './IOrganization'
 
 export const fetchOrganizations = createAsyncThunk(
   'organizations/fetchall',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get<IOrganizations[]>('http://127.0.0.1:8080/organization');
+      const response = await axios.get<IOrganization[]>('http://127.0.0.1:8080/organization');
       return response.data;
     } catch (error) {
       let errorMessage = '';

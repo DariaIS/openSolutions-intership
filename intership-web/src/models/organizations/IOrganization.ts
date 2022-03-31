@@ -1,4 +1,4 @@
-export type IOrganizations = { 
+export type IOrganization = { 
     INN: string,
     address: string,
     id: number,
