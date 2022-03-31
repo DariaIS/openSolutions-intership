@@ -14,8 +14,12 @@ export const fetchSignIn = (login, password, setError) => {
     })
       .then((Response) => Response.json())
       .then((json) => {
-        if (json.isLogin) dispatch(authorize({ login, password }));
-        else setError('Incorrent login or password');
+        if (json.isLogin) {
+          dispatch(authorize({ login, password }));
+        }
+        else {
+          setError('Incorrent login or password');
+        }
       })
       .catch((error) => {
         console.log(error);

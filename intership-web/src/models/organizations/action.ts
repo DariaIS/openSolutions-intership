@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-semi */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { IOrganizations } from './IOrganizations'
@@ -11,8 +12,7 @@ export const fetchOrganizations = createAsyncThunk(
     } catch (error) {
       let errorMessage = '';
       if (error instanceof Error)
-        errorMessage = error.message
-
+        errorMessage = error.message;
       return thunkAPI.rejectWithValue(errorMessage)
     }
   }
