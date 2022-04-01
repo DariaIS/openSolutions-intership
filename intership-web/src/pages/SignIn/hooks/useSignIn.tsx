@@ -1,7 +1,6 @@
 import { ChangeEventHandler, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { authorize } from '../../../models/authorize/slice';
+import { useAppDispatch } from '../../../hooks/index';
 import { fetchSignIn } from '../../../models/authorize/action';
 
 type Props = {
@@ -24,14 +23,14 @@ export const useSignIn = (props: Props) => {
     }
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSignIn = () => {
     if (!login.trim() || !password.trim()) {
       setError('too empty =(');
     }
     else {
-      dispatch(fetchSignIn(login, password, setError));
+      dispatch<any>(fetchSignIn(login, password, setError));
     }
   };
 

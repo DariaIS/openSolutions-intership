@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchOrganizations } from './action';
-import { IOrganization } from './IOrganization'
+import { IOrganization } from './IOrganization';
 
 type IOrganizationsState = { 
   organizationsList: IOrganization[], 
@@ -15,7 +15,7 @@ const initialState: IOrganizationsState = {
   error: ''
 };
 
-export const organizationsSlice: Slice<IOrganizationsState> = createSlice({
+export const organizationsSlice = createSlice({
   name: 'organizations',
   initialState,
   reducers: {
@@ -43,5 +43,5 @@ export const organizationsSlice: Slice<IOrganizationsState> = createSlice({
 });
 
 export const { addOrganization, removeOrganization } = organizationsSlice.actions;
-export const selectOrganizations = (state) => state.organizations;
+export const selectOrganizations = (state: { organizations: IOrganizationsState; }) => state.organizations;
 export default organizationsSlice.reducer;
