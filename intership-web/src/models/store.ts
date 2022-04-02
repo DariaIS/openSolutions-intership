@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 
 import userReducer from './authorize/slice';
 import organizationsReducer from './organizations/slice';
+import divisionsReducer from './divisions/slice';
 
 import { loadState, saveState } from './localstorage';
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    organizations: organizationsReducer
+    organizations: organizationsReducer,
+    divisions: divisionsReducer
   },
   middleware: [thunk],
   preloadedState: loadState()

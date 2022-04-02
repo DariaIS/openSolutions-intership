@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Navigation } from 'Src/components/Navigation';
 
@@ -42,7 +42,7 @@ export const Organizations: React.FC = () => {
                       <td>{elem.address}</td>
                       <td>{elem.INN}</td>
                       <td>
-                        <a href="#">more</a>
+                        <Link to={`/organizations/${elem.id}`}>more</Link>
                         <a href="#">add</a>
                         <a href="#">remove</a>
                       </td>

@@ -13,7 +13,7 @@ export const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/organizations' element={<ProtectedRoute><Organizations/></ProtectedRoute>}/>
-        <Route path='/organizations/:id_organization' element={<ProtectedRoute><Divisions/></ProtectedRoute>}/>
+        <Route path='/organizations/:organizationId' element={<ProtectedRoute><Divisions/></ProtectedRoute>}/>
       </Routes>
     </div>
   );
