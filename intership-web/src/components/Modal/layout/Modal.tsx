@@ -1,9 +1,6 @@
-import React, { Fragment, MouseEventHandler, KeyboardEventHandler } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import s from '../styles.module.scss';
-
-// const actions = {openModal, closeModal};
+import s from './styles.module.scss';
 
 type Props = {
   isOpen: boolean,
@@ -38,5 +35,3 @@ export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) 
     </>
   );
 };
-
-// export default connect(null, actions)(Modal);

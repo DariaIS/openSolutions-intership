@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, MouseEventHandler } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Navigation } from 'Src/components/Navigation';
@@ -58,9 +58,7 @@ export const Organizations: React.FC = () => {
                         <td>{elem.address}</td>
                         <td>{elem.INN}</td>
                         <td>
-                          <div>
-                            <Link to={`/organizations/${elem.id}`}>more</Link>
-                          </div>
+                          <Link to={`/organizations/${elem.id}`}>more</Link>
                           <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
                           <a onClick={() => handleRemoveModal(elem.id)} onKeyDown={() => handleRemoveModal(elem.id)} role='button' tabIndex={0}>remove</a>
                         </td>

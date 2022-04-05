@@ -6,8 +6,6 @@ import { Modal } from './layout/index';
 import { RemoveModal } from './RemoveModal';
 import { ChangeModal } from './ChangeModal';
 
-// const actions = {openModal, closeModal};
-
 // type Props = {
 //   isOpen: boolean,
 //   childrenProps: object,
