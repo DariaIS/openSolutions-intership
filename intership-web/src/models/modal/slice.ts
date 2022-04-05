@@ -28,7 +28,8 @@ export const modalSlice = createSlice({
       // state.childrenProps = action.payload.childrenProps;
     },
     closeModal: (state) => {
-      return initialState;
+      state.isOpen = false;
+      state.componentName = null!;
     }
   },
 });

@@ -3,13 +3,13 @@ import React, { useEffect, useState, MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Navigation } from 'Src/components/Navigation';
+import { ModalManager } from '../../components/Modal';
 
 import { selectOrganizations } from '../../models/organizations/slice';
 import { fetchOrganizations } from '../../models/organizations/action';
 import { openModal } from '../../models/modal/slice';
 import { useAppSelector, useAppDispatch } from '../../hooks/index';
 
-// import { showModal } from '../../models/modal/action';
 
 export const Organizations: React.FC = () => {
   const { organizationsList, isLoading, error } = useAppSelector(selectOrganizations);
@@ -17,7 +17,13 @@ export const Organizations: React.FC = () => {
 
   const handleChangeModal = (id: number) => {
     dispatch(openModal({
-      componentName: 'changeOrganization'
+      componentName: 'ChangeModal'
+    }))
+  };
+
+  const handleRemoveModal = (id: number) => {
+    dispatch(openModal({
+      componentName: 'RemoveModal'
     }))
   };
 
@@ -56,7 +62,7 @@ export const Organizations: React.FC = () => {
                             <Link to={`/organizations/${elem.id}`}>more</Link>
                           </div>
                           <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
-                          <div>remove</div>
+                          <a onClick={() => handleRemoveModal(elem.id)} onKeyDown={() => handleRemoveModal(elem.id)} role='button' tabIndex={0}>remove</a>
                         </td>
                     </tr>
                 )
@@ -64,6 +70,7 @@ export const Organizations: React.FC = () => {
             }
           </tbody>
         </table>
+        <ModalManager />
       </div>
     }
   </div>

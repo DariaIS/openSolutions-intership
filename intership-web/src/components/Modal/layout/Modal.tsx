@@ -1,33 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, MouseEventHandler, KeyboardEventHandler } from 'react';
 import { connect } from 'react-redux';
 
-import { Button } from 'Common/UI/Button';
-import { Input } from 'Common/UI/Input';
-
-import s from './styles.module.scss';
+import s from '../styles.module.scss';
 
 // const actions = {openModal, closeModal};
 
 type Props = {
   isOpen: boolean,
-  closeModalHandler: object
+  closeModalHandler: () => {
+    payload: undefined,
+    type: string
+  }
 };
 
 export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) => {
   return (
-    <React.Fragment>
+    <>
       <div
-        onClick={() => closeModalHandler}
+        onClick={closeModalHandler}
+        onKeyDown={closeModalHandler}
+        role="button"
+        tabIndex={0}
         className={`${s.backDrop} ${isOpen ? s.show : s.hide}`}
-      >
-      </div>
+      />
       <div className={`${s.сontainer} ${isOpen ? s.show : s.hide}`}>
-        <a className={s.closeButton} onClick={() => closeModalHandler}>
+        <a
+          onClick={closeModalHandler}
+          onKeyDown={closeModalHandler}
+          role="button"
+          tabIndex={0}
+          className={s.closeButton} 
+        >
           close
         </a>
         <div className={s.content}>{children}</div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
