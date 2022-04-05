@@ -1,20 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Navigation } from 'Src/components/Navigation';
 
 import { selectOrganizations } from '../../models/organizations/slice';
 import { fetchOrganizations } from '../../models/organizations/action';
+import { openModal } from '../../models/modal/slice';
 import { useAppSelector, useAppDispatch } from '../../hooks/index';
-import { Modal } from '../../components/Modal';
 
 // import { showModal } from '../../models/modal/action';
 
 export const Organizations: React.FC = () => {
   const { organizationsList, isLoading, error } = useAppSelector(selectOrganizations);
-  const [modal, setModal] = useState(false);
   const dispatch = useAppDispatch();
+
+  const handleChangeModal = (id: number) => {
+    dispatch(openModal({
+      componentName: 'changeOrganization'
+    }))
+  };
 
   useEffect(() => {
     dispatch<any>(fetchOrganizations());
@@ -50,7 +55,7 @@ export const Organizations: React.FC = () => {
                           <div>
                             <Link to={`/organizations/${elem.id}`}>more</Link>
                           </div>
-                          <div onClick={() => setModal(true)} onKeyDown={() => setModal(true)} role="button" tabIndex={0}>add</div>
+                          <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
                           <div>remove</div>
                         </td>
                     </tr>

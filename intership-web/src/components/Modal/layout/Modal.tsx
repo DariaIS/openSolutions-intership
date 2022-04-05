@@ -1,36 +1,34 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import ReactModal from 'react-modal';
 
 import { Button } from 'Common/UI/Button';
 import { Input } from 'Common/UI/Input';
 
-import { openModal } from '../../models/modal/action';
-import { closeModal } from '../../models/modal/slice';
+import s from './styles.module.scss';
 
-const actions = {openModal, closeModal};
+// const actions = {openModal, closeModal};
 
 type Props = {
   isOpen: boolean,
-  childrenProps: object,
   closeModalHandler: object
 };
 
 export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) => {
   return (
     <React.Fragment>
-      <a
+      <div
         onClick={() => closeModalHandler}
+        className={`${s.backDrop} ${isOpen ? s.show : s.hide}`}
       >
-      </a>
-      <div>
-        <a className='modal-close' onClick={() => closeModalHandler}>
+      </div>
+      <div className={`${s.сontainer} ${isOpen ? s.show : s.hide}`}>
+        <a className={s.closeButton} onClick={() => closeModalHandler}>
           close
         </a>
-        <div>{children}</div>
+        <div className={s.content}>{children}</div>
       </div>
     </React.Fragment>
   );
 };
 
-export default connect(null, actions)(Modal);
+// export default connect(null, actions)(Modal);
