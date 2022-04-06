@@ -15,11 +15,6 @@ export const Navigation: React.FC = () => {
   return (
     <div>
       <nav>
-        <Link to="/">home</Link>
-        <Link to="/counter">counter</Link>
-        <Link to="/todos">todos</Link>
-      </nav>
-      <nav>
         <Button onClick={handleLogout}>Log Out</Button>
       </nav>
     </div>
