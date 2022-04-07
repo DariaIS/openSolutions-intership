@@ -2,7 +2,7 @@ import React from 'react';
 
 import s from './styles.module.scss';
 
-type Props = {
+type IModal = {
   isOpen: boolean,
   closeModalHandler: () => {
     payload: undefined,
@@ -10,7 +10,7 @@ type Props = {
   }
 };
 
-export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) => {
+export const Modal: React.FC<IModal> = ({ children, isOpen, closeModalHandler }) => {
   return (
     <>
       <div

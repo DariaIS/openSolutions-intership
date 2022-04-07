@@ -8,7 +8,6 @@ import s from './App.module.scss';
 export const App: React.FC = () => {
   return (
     <div className={s.app}>
-      {/* <Navigation /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/organizations' element={<Organizations/>} />

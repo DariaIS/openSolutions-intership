@@ -1,10 +1,7 @@
 import React from 'react';
+import { IActionModal } from '../IActionModal';
 
-type Props = {
-  componentName: string
-};
-
-export const ChangeModal: React.FC<Props> = () => {
+export const ChangeModal: React.FC<IActionModal> = (componentName) => {
   return (
     <div>
       this is change modal

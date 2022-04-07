@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/index';
 import { Modal } from './layout/index';
 import { RemoveModal } from './RemoveModal';
 import { ChangeModal } from './ChangeModal';
+import { IActionModal } from './IActionModal';
 
 // type Props = {
 //   isOpen: boolean,
@@ -14,16 +15,16 @@ import { ChangeModal } from './ChangeModal';
 
 export const ModalManager: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isOpen, componentName } = useAppSelector(selectModal);
+  const { isOpen, componentName, typeOfModal } = useAppSelector(selectModal);
 
   const closeModalHandler = () => dispatch(closeModal());
   let renderComponent: JSX.Element | null = null;
 
-  const componentsLookUp = { ChangeModal, RemoveModal };
-  if (componentName) {
-    const SelectedComponent = componentsLookUp[componentName];
+  const modalsLookUp = { ChangeModal, RemoveModal };
+  if (typeOfModal) {
+    const SelectedComponent: React.FC<IActionModal> = modalsLookUp[typeOfModal];
     if (SelectedComponent) {
-      renderComponent = <SelectedComponent/>;
+      renderComponent = <SelectedComponent componentName={componentName}/>;
     }
   }
 
