@@ -22,7 +22,7 @@ export const organizationsSlice = createSlice({
     addOrganization: (state, action: PayloadAction<IOrganization>) => {
       state.organizationsList = [...state.organizationsList, action.payload];
     },
-    removeOrganization: (state, action: PayloadAction<number>) => {
+    deleteOrganization: (state, action: PayloadAction<number>) => {
       state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
     }
   },
@@ -42,6 +42,6 @@ export const organizationsSlice = createSlice({
   }
 });
 
-export const { addOrganization, removeOrganization } = organizationsSlice.actions;
+export const { addOrganization, deleteOrganization } = organizationsSlice.actions;
 export const selectOrganizations = (state: { organizations: IOrganizationsState; }) => state.organizations;
 export default organizationsSlice.reducer;

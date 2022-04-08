@@ -6,7 +6,7 @@ import { Input } from 'Common/UI/Input';
 import { useSignIn } from './hooks/useSignIn';
 
 export const SignIn: React.FC = () => {
-  const { handleSignIn, handleChangeSingIn, login, password, error } = useSignIn({});
+  const { handleSignIn, handleChangeSingIn, login, password, error } = useSignIn();
 
   return (
     <div>

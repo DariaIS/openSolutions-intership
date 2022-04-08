@@ -19,14 +19,16 @@ export const Organizations: React.FC = () => {
   const handleChangeModal = (id: number) => {
     dispatch(openModal({
       componentName: 'Organizations',
-      typeOfModal: 'Change'
+      typeOfModal: 'Change',
+      componentId: id
     }))
   };
 
   const handleRemoveModal = (id: number) => {
     dispatch(openModal({
       componentName: 'Organizations',
-      typeOfModal: 'Remove'
+      typeOfModal: 'Remove',
+      componentId: id
     }))
   };
 
