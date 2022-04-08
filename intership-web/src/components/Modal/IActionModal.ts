@@ -1,3 +1,8 @@
 export type IActionModal = { 
-  componentName: string
+  componentName: string,
+  componentId: number,
+  closeModalHandler: () => {
+    payload: undefined,
+    type: string
+  }
 };

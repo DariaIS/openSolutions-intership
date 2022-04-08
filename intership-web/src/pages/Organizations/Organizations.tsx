@@ -18,16 +18,16 @@ export const Organizations: React.FC = () => {
 
   const handleChangeModal = (id: number) => {
     dispatch(openModal({
-      componentName: 'Organizations',
-      typeOfModal: 'Change',
+      componentName: 'Organization',
+      typeOfModal: 'ChangeModal',
       componentId: id
     }))
   };
 
   const handleRemoveModal = (id: number) => {
     dispatch(openModal({
-      componentName: 'Organizations',
-      typeOfModal: 'Remove',
+      componentName: 'Organization',
+      typeOfModal: 'DeleteModal',
       componentId: id
     }))
   };
@@ -66,7 +66,7 @@ export const Organizations: React.FC = () => {
                             <td>
                               <Link to={`/organizations/${elem.id}`}>more</Link>
                               <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
-                              <a onClick={() => handleRemoveModal(elem.id)} onKeyDown={() => handleRemoveModal(elem.id)} role='button' tabIndex={0}>remove</a>
+                              <a onClick={() => handleRemoveModal(elem.id)} onKeyDown={() => handleRemoveModal(elem.id)} role='button' tabIndex={0}>delete</a>
                             </td>
                         </tr>
                     )

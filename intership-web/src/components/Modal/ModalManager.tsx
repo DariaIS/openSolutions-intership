@@ -15,7 +15,7 @@ import { IActionModal } from './IActionModal';
 
 export const ModalManager: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isOpen, componentName, typeOfModal } = useAppSelector(selectModal);
+  const { isOpen, componentName, typeOfModal, componentId } = useAppSelector(selectModal);
 
   const closeModalHandler = () => dispatch(closeModal());
   let renderComponent: JSX.Element | null = null;
@@ -24,7 +24,7 @@ export const ModalManager: React.FC = () => {
   if (typeOfModal) {
     const SelectedComponent: React.FC<IActionModal> = modalsLookUp[typeOfModal];
     if (SelectedComponent) {
-      renderComponent = <SelectedComponent componentName={componentName}/>;
+      renderComponent = <SelectedComponent componentName={componentName} componentId={componentId} closeModalHandler={closeModalHandler}/>;
     }
   }
 

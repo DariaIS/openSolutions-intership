@@ -1,5 +1,6 @@
-import { deleteOrganization } from '../slice';
 import { Dispatch } from 'react';
+
+import { deleteOrganization } from '../slice';
 import { AppDispatch } from '../../store';
 
 type IfetchDeleteOrganization = (
@@ -11,18 +12,12 @@ type IfetchDeleteOrganization = (
 export const fetchDeleteOrganization: IfetchDeleteOrganization = (organizationId) => {
   
   return (dispatch) => {
-    fetch(`http://127.0.0.1:8080/organization/${organizationId}`, {
-      headers:  {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      },
-      method: "DELETE",
+    fetch(`http://127.0.0.1:8080/organization/?id=${organizationId}`, {
+      method: 'DELETE'
     })
-      .then((Response) => Response.json())
-      .then((json) => {
-        if (json.isLogin) {
-          dispatch(deleteOrganization(organizationId));
-        }
+      .then((Response) => {
+        console.log(Response);
+        dispatch(deleteOrganization(organizationId));
       })
       .catch((error) => {
         console.log(error);
