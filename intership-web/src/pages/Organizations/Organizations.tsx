@@ -7,7 +7,7 @@ import { ModalManager } from '../../components/Modal';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
 
 import { selectOrganizations } from '../../models/organizations/slice';
-import { fetchOrganizations } from '../../models/organizations/action';
+import { fetchOrganizations } from '../../models/organizations/actions/fetchOrganizations';
 import { openModal } from '../../models/modal/slice';
 import { useAppSelector, useAppDispatch } from '../../hooks/index';
 

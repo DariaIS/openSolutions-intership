@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchOrganizations } from './action';
+import { fetchOrganizations } from './actions/fetchOrganizations';
 import { IOrganization } from './IOrganization';
 
 type IOrganizationsState = { 
