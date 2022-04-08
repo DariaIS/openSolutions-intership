@@ -1,10 +1,16 @@
 import React from 'react';
-import { IActionModal } from '../IActionModal';
 
-export const ChangeModal: React.FC<IActionModal> = (componentName) => {
+import { IActionModal } from '../IActionModal';
+import { ChangeOrganization } from './Organization';
+
+export const ChangeModal: React.FC<IActionModal> = ({ componentName, componentId, closeModalHandler }) => {
+  
   return (
-    <div>
-      this is change modal
+    <div> 
+      {
+        componentName === 'Organization' &&
+        <ChangeOrganization id={componentId} closeModalHandler={closeModalHandler}/>
+      }
     </div>
   );
 };

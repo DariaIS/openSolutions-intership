@@ -33,8 +33,8 @@ export const useAuthorize = () => {
   return {
     handleChangeAuthorize,
     handleAuthorize,
-    error,
     login,
     password,
+    error
   };
 };

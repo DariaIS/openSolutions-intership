@@ -24,6 +24,11 @@ export const organizationsSlice = createSlice({
     },
     deleteOrganization: (state, action: PayloadAction<number>) => {
       state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
+    },
+    changeOrganization: (state, action: PayloadAction<IOrganization>) => {
+      state.organizationsList[action.payload.id].name = action.payload.name;
+      state.organizationsList[action.payload.id].address = action.payload.address;
+      state.organizationsList[action.payload.id].INN = action.payload.INN;
     }
   },
   extraReducers: {
@@ -42,6 +47,6 @@ export const organizationsSlice = createSlice({
   }
 });
 
-export const { addOrganization, deleteOrganization } = organizationsSlice.actions;
+export const { addOrganization, deleteOrganization, changeOrganization } = organizationsSlice.actions;
 export const selectOrganizations = (state: { organizations: IOrganizationsState; }) => state.organizations;
 export default organizationsSlice.reducer;
