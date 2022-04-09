@@ -21,15 +21,6 @@ export const Modal: React.FC<IModal> = ({ children, isOpen, closeModalHandler })
         className={`${s.backDrop} ${isOpen ? s.show : s.hide}`}
       />
       <div className={`${s.сontainer} ${isOpen ? s.show : s.hide}`}>
-        <a
-          onClick={closeModalHandler}
-          onKeyDown={closeModalHandler}
-          role="button"
-          tabIndex={0}
-          className={s.closeButton} 
-        >
-          close
-        </a>
         <div className={s.content}>{children}</div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from 'Common/UI/Button';
 import { Input } from 'Common/UI/Input';
-import { useChangeOrganization } from './hooks/useChangeOrganization';
+import { useAddOrganization } from './hooks/useAddOrganization';
 
 type Props = { 
   id: number,
@@ -12,8 +12,8 @@ type Props = {
   }
 };
 
-export const ChangeOrganization: React.FC<Props> = ({ id, closeModalHandler}) => {
-  const { handleInputChange, handleChangeOrganization, error, organizationName, address, INN } = useChangeOrganization();
+export const AddOrganization: React.FC<Props> = ({ id, closeModalHandler }) => {
+  const { handleInputChange, handleAddOrganization, error, organizationName, address, INN } = useAddOrganization();
   
   return (
     <div>
@@ -27,7 +27,7 @@ export const ChangeOrganization: React.FC<Props> = ({ id, closeModalHandler}) =>
 
       <Input name='INN' type="text" value={INN} onChange={handleInputChange} />
       <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleChangeOrganization(id, closeModalHandler)}>Change</Button>
+      <Button onClick={() => handleAddOrganization(id, closeModalHandler)}>Add</Button>
     </div>
   );
 };

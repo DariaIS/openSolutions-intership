@@ -8,29 +8,12 @@ import { ProtectedRoute } from '../../components/ProtectedRoute';
 
 import { selectOrganizations } from '../../models/organizations/slice';
 import { fetchOrganizations } from '../../models/organizations/actions/fetchOrganizations';
-import { openModal } from '../../models/modal/slice';
-import { useAppSelector, useAppDispatch } from '../../hooks/index';
-
+import { useAppSelector } from '../../hooks/index';
+import { useOrganizations } from './hooks/useOrganizations';
 
 export const Organizations: React.FC = () => {
   const { organizationsList, isLoading, error } = useAppSelector(selectOrganizations);
-  const dispatch = useAppDispatch();
-
-  const handleChangeModal = (id: number) => {
-    dispatch(openModal({
-      componentName: 'Organization',
-      typeOfModal: 'ChangeModal',
-      componentId: id
-    }))
-  };
-
-  const handleRemoveModal = (id: number) => {
-    dispatch(openModal({
-      componentName: 'Organization',
-      typeOfModal: 'DeleteModal',
-      componentId: id
-    }))
-  };
+  const { dispatch, handleAddModal, handleChangeModal, handleDeleteModal } = useOrganizations();
 
   useEffect(() => {
     dispatch<any>(fetchOrganizations());
@@ -44,6 +27,7 @@ export const Organizations: React.FC = () => {
         {error && <h1>{error}</h1>}
         {organizationsList && 
           <div>
+            <a onClick={() => handleAddModal(null!)} onKeyDown={() => handleAddModal(null!)} role='button' tabIndex={0}>Add Organization</a>
             <table>
               <thead>
                 <tr>
@@ -66,7 +50,7 @@ export const Organizations: React.FC = () => {
                             <td>
                               <Link to={`/organizations/${elem.id}`}>more</Link>
                               <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
-                              <a onClick={() => handleRemoveModal(elem.id)} onKeyDown={() => handleRemoveModal(elem.id)} role='button' tabIndex={0}>delete</a>
+                              <a onClick={() => handleDeleteModal(elem.id)} onKeyDown={() => handleDeleteModal(elem.id)} role='button' tabIndex={0}>delete</a>
                             </td>
                         </tr>
                     )

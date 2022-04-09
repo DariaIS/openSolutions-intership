@@ -12,6 +12,7 @@ export const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path='/organizations' element={<Organizations/>} />
         <Route path='/organizations/:organizationId' element={<Divisions/>} />
+        <Route path='/organizations/:organizationId/:divisionId' element={<Divisions/>} />
       </Routes>
     </div>
   );

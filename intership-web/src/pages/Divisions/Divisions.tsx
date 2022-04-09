@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { Navigation } from 'Src/components/Navigation';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
@@ -51,7 +51,7 @@ export const Divisions: React.FC = () => {
                           <td>{elem.name}</td>
                           <td>{elem.phone}</td>
                           <td>
-                            <a href="#">more</a>
+                            <Link to={`/organizations/${organizationId}/${elem.id}`}>more</Link>
                             <a href="#">add</a>
                             <a href="#">remove</a>
                           </td>

@@ -1,9 +1,9 @@
 import { ChangeEventHandler, useState } from 'react';
 
 import { useAppDispatch } from '../../../../../hooks/index';
-import { fetchChangeOrganization } from '../../../../../models/organizations/actions/fetchChangeOrganization';
+import { fetchAddOrganization } from '../../../../../models/organizations/actions/fetchAddOrganization';
 
-export const useChangeOrganization = () => {
+export const useAddOrganization = () => {
   const [error, setError] = useState('');
   const [organizationName, setOrganizationName] = useState('');
   const [address, setAddress] = useState('');
@@ -29,7 +29,7 @@ export const useChangeOrganization = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleChangeOrganization = (
+  const handleAddOrganization = (
     id: number, 
     closeModalHandler: () => {
       payload: undefined,
@@ -42,7 +42,7 @@ export const useChangeOrganization = () => {
       setError('Please, Provide valid detials!');
     }
     else {
-      dispatch<any>(fetchChangeOrganization(id, organizationName, address, Number(INN)));
+      fetchAddOrganization(organizationName, address, Number(INN));
       closeModalHandler();
     }
 
@@ -50,7 +50,7 @@ export const useChangeOrganization = () => {
 
   return {
     handleInputChange,
-    handleChangeOrganization,
+    handleAddOrganization,
     error,
     organizationName,
     address,

@@ -19,9 +19,6 @@ export const organizationsSlice = createSlice({
   name: 'organizations',
   initialState,
   reducers: {
-    addOrganization: (state, action: PayloadAction<IOrganization>) => {
-      state.organizationsList = [...state.organizationsList, action.payload];
-    },
     deleteOrganization: (state, action: PayloadAction<number>) => {
       state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
     },
@@ -47,6 +44,6 @@ export const organizationsSlice = createSlice({
   }
 });
 
-export const { addOrganization, deleteOrganization, changeOrganization } = organizationsSlice.actions;
+export const { deleteOrganization, changeOrganization } = organizationsSlice.actions;
 export const selectOrganizations = (state: { organizations: IOrganizationsState; }) => state.organizations;
 export default organizationsSlice.reducer;
