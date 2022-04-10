@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import userReducer from './authorize/slice';
 import organizationsReducer from './organizations/slice';
 import divisionsReducer from './divisions/slice';
+import employeeReducer from './employee/slice';
 import modalReducer from './modal/slice';
 
 import { loadState, saveState } from './localstorage';
@@ -13,6 +14,7 @@ const store = configureStore({
     user: userReducer,
     organizations: organizationsReducer,
     divisions: divisionsReducer,
+    employee: employeeReducer,
     modal: modalReducer
   },
   middleware: [thunk],

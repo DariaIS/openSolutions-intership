@@ -1,20 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+
+import { Button } from 'Common/UI/Button';
 
 import { Navigation } from 'Src/components/Navigation';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
 
 import { selectDivisions } from '../../models/divisions/slice';
 import { fetchDivisions } from '../../models/divisions/action';
-import { useAppSelector, useAppDispatch } from '../../hooks/index';
+import { useAppSelector } from '../../hooks/index';
+import { useDivisions } from './hooks/useDivisions';
 
 
 export const Divisions: React.FC = () => {
   const { divisionsList, isLoading, error } = useAppSelector(selectDivisions);
+  const { dispatch } = useDivisions();
+  const navigate = useNavigate();
   const { organizationId } = useParams();
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (typeof organizationId === "string") {
@@ -26,6 +30,7 @@ export const Divisions: React.FC = () => {
     <ProtectedRoute>
       <div>
         <Navigation/>
+        <Button onClick={() => navigate(`/organizations`)}>Back</Button>
         <h1>Organization - { organizationId } </h1>
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
@@ -41,7 +46,6 @@ export const Divisions: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(divisionsList)}
               {
                 Object.values(divisionsList).map((elem) => {
                   return (
