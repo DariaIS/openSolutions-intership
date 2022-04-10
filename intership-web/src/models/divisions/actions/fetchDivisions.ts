@@ -1,7 +1,7 @@
 /* eslint-disable no-extra-semi */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IDivision } from './IDivision';
+import { IDivision } from '../IDivision';
 
 export const fetchDivisions = createAsyncThunk(
   'divisions/fetchDivisions',

@@ -20,7 +20,7 @@ export const ChangeOrganization: React.FC<Props> = ({ id, closeModalHandler}) =>
       <p>Change Organization</p>
       {error.length > 0 && <p>{error}</p>}
       <p>Organization Name</p>
-      <Input name='name' type="text" value={organizationName} onChange={handleInputChange} />
+      <Input name='organizationName' type="text" value={organizationName} onChange={handleInputChange} />
       <p>Organization Address</p>
       <Input name='address' type="text" value={address} onChange={handleInputChange} />            
       <p>Organization&apos;s INN</p>

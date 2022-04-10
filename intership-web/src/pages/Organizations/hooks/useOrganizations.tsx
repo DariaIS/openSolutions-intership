@@ -1,5 +1,5 @@
-import { useAppDispatch } from '../../../hooks/index';
-import { openModal } from '../../../models/modal/slice';
+import { useAppDispatch } from 'src/hooks/index';
+import { openModal } from 'src/models/modal/slice';
 
 export const useOrganizations = () => {
   const dispatch = useAppDispatch();

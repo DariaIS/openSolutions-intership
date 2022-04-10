@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchDivisions } from './action';
+import { fetchDivisions } from './actions/fetchDivisions';
 import { IDivision } from './IDivision';
 
 type IDivisionsState = { 
@@ -19,11 +19,12 @@ export const divisionsSlice = createSlice({
   name: 'divisions',
   initialState,
   reducers: {
-    addDivision: (state, action: PayloadAction<IDivision>) => {
-      state.divisionsList = [...state.divisionsList, action.payload];
-    },
-    removeDivision: (state, action: PayloadAction<number>) => {
+    deleteDivision: (state, action: PayloadAction<number>) => {
       state.divisionsList = state.divisionsList.filter(elem => elem.id !== action.payload);
+    },
+    changeDivision: (state, action: PayloadAction<IDivision>) => {
+      state.divisionsList[action.payload.id].name = action.payload.name;
+      state.divisionsList[action.payload.id].phone = action.payload.phone;
     }
   },
   extraReducers: {
@@ -42,6 +43,6 @@ export const divisionsSlice = createSlice({
   }
 });
 
-export const { addDivision, removeDivision } = divisionsSlice.actions;
+export const { deleteDivision, changeDivision } = divisionsSlice.actions;
 export const selectDivisions = (state: { divisions: IDivisionsState; }) => state.divisions;
 export default divisionsSlice.reducer;

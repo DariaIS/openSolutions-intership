@@ -1,7 +1,7 @@
 import { ChangeEventHandler, useState } from 'react';
 
-import { useAppDispatch } from '../../../../../hooks/index';
-import { fetchChangeOrganization } from '../../../../../models/organizations/actions/fetchChangeOrganization';
+import { useAppDispatch } from 'src/hooks/index';
+import { fetchChangeOrganization } from 'src/models/organizations/actions/fetchChangeOrganization';
 
 export const useChangeOrganization = () => {
   const [error, setError] = useState('');
@@ -13,7 +13,7 @@ export const useChangeOrganization = () => {
     target: { value, name },
   }) => {
     switch (name) {
-      case 'name':
+      case 'organizationName':
         setOrganizationName(value);
         break;
       case 'address':

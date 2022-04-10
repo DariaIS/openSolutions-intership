@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { Button } from 'Common/UI/Button';
+import { ModalManager } from 'src/components/Modal';
 
-import { Navigation } from 'Src/components/Navigation';
-import { ModalManager } from '../../components/Modal';
-import { ProtectedRoute } from '../../components/ProtectedRoute';
+import { Navigation } from 'src/components/Navigation';
+import { ProtectedRoute } from 'src/components/ProtectedRoute';
 
-import { selectOrganizations } from '../../models/organizations/slice';
-import { fetchOrganizations } from '../../models/organizations/actions/fetchOrganizations';
-import { useAppSelector } from '../../hooks/index';
+import { selectOrganizations } from 'src/models/organizations/slice';
+import { fetchOrganizations } from 'src/models/organizations/actions/fetchOrganizations';
+
+import { useAppSelector } from 'src/hooks/index';
 import { useOrganizations } from './hooks/useOrganizations';
-
 
 export const Organizations: React.FC = () => {
   const { organizationsList, isLoading, error } = useAppSelector(selectOrganizations);
   const { dispatch, handleAddModal, handleChangeModal, handleDeleteModal } = useOrganizations();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch<any>(fetchOrganizations());
@@ -51,9 +51,28 @@ export const Organizations: React.FC = () => {
                             <td>{elem.address}</td>
                             <td>{elem.INN}</td>
                             <td>
-                              <Link to={`/organizations/${elem.id}`}>more</Link>
-                              <a onClick={() => handleChangeModal(elem.id)} onKeyDown={() => handleChangeModal(elem.id)} role='button' tabIndex={0}>change</a>
-                              <a onClick={() => handleDeleteModal(elem.id)} onKeyDown={() => handleDeleteModal(elem.id)} role='button' tabIndex={0}>delete</a>
+                              <a 
+                                onClick={() => navigate(`/organizations/${elem.id}`)} 
+                                onKeyDown={() => navigate(`/organizations/${elem.id}`)}
+                                role='button' 
+                                tabIndex={0}>
+                                  more
+                              </a>
+                              {/* <Link to={`/organizations/${elem.id}`}>more</Link> */}
+                              <a 
+                                onClick={() => handleChangeModal(elem.id)} 
+                                onKeyDown={() => handleChangeModal(elem.id)} 
+                                role='button' 
+                                tabIndex={0}>
+                                  change
+                              </a>
+                              <a 
+                                onClick={() => handleDeleteModal(elem.id)} 
+                                onKeyDown={() => handleDeleteModal(elem.id)} 
+                                role='button' 
+                                tabIndex={0}>
+                                  delete
+                              </a>
                             </td>
                         </tr>
                     )
