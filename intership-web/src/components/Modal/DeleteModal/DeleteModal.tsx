@@ -16,18 +16,19 @@ export const DeleteModal: React.FC<IActionModal> = ({ componentName, componentId
     switch (componentName) {
       case 'Organization':
         dispatch<any>(fetchDeleteOrganization(componentId));
+        closeModalHandler();
         break;
       case 'Division':
         dispatch<any>(fetchDeleteDivision(componentId));
+        closeModalHandler();
         break;
       case 'Employee':
         dispatch<any>(fetchDeleteEmployee(componentId));
+        closeModalHandler();
         break;
       default:
         break;
     }
-    if (componentName === 'Organization')
-    closeModalHandler();
   };
 
   return (
