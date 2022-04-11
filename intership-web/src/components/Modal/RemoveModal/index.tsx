@@ -1,0 +1,2 @@
+export { RemoveModal } from './RemoveModal';
+
