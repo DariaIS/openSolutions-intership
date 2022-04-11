@@ -17,7 +17,7 @@ import { useDivisions } from './hooks/useDivisions';
 
 export const Divisions: React.FC = () => {
   const { divisionsList, isLoading, error } = useAppSelector(selectDivisions);
-  const { dispatch, handleChangeModal, handleDeleteModal } = useDivisions();
+  const { dispatch, handleAddModal, handleChangeModal, handleDeleteModal } = useDivisions();
   const navigate = useNavigate();
   const { organizationId } = useParams();
 
@@ -37,6 +37,7 @@ export const Divisions: React.FC = () => {
         {error && <h1>{error}</h1>}
         {divisionsList.length > 0 &&
           <div>
+            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Division</a>
             <table>
               <thead>
                 <tr>
@@ -50,7 +51,6 @@ export const Divisions: React.FC = () => {
               <tbody>
                 {
                   Object.values(divisionsList).map((elem) => {
-                    console.log(elem)
                     return (
                         <tr key={elem.id}>
                             <td>{elem.id}</td>
@@ -65,7 +65,6 @@ export const Divisions: React.FC = () => {
                                 tabIndex={0}>
                                   more
                               </a>
-                              {/* <Link to={`/organizations/${organizationId}/${elem.id}`}>more</Link> */}
                               <a 
                                 onClick={() => handleChangeModal(elem.id)} 
                                 onKeyDown={() => handleChangeModal(elem.id)} 

@@ -30,7 +30,7 @@ export const Organizations: React.FC = () => {
         {error && <h1>{error}</h1>}
         {organizationsList && 
           <div>
-            <a onClick={() => handleAddModal(null!)} onKeyDown={() => handleAddModal(null!)} role='button' tabIndex={0}>Add Organization</a>
+            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Organization</a>
             <table>
               <thead>
                 <tr>

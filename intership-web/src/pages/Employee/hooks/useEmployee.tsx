@@ -4,6 +4,14 @@ import { openModal } from 'src/models/modal/slice';
 export const useEmployee = () => {
   const dispatch = useAppDispatch();
 
+  const handleAddModal = () => {
+    dispatch(openModal({
+      componentName: 'Employee',
+      typeOfModal: 'AddModal',
+      componentId: null!
+    }))
+  };
+
   const handleChangeModal = (id: number) => {
     dispatch(openModal({
       componentName: 'Employee',
@@ -22,6 +30,7 @@ export const useEmployee = () => {
 
   return {
     dispatch,
+    handleAddModal,
     handleChangeModal,
     handleDeleteModal
   };

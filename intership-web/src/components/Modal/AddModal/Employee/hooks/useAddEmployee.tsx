@@ -1,46 +1,44 @@
 import { ChangeEventHandler, useState } from 'react';
 
 import { useAppDispatch } from 'src/hooks/index';
-import { fetchAddOrganization } from 'src/models/organizations/actions/fetchAddOrganization';
+import { fetchAddEmployee } from 'src/models/employee/actions/fetchAddEmployee';
 
-export const useAddOrganization = () => {
+export const useAddEmployee = () => {
   const [error, setError] = useState('');
-  const [organizationName, setOrganizationName] = useState('');
+  const [FIO, setFIO] = useState('');
   const [address, setAddress] = useState('');
-  const [INN, setINN] = useState('');
+  const [position, setPosition] = useState('');
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value, name },
   }) => {
     switch (name) {
-      case 'name':
-        setOrganizationName(value);
+      case 'FIO':
+        setFIO(value);
         break;
       case 'address':
         setAddress(value);
         break;
-      case 'INN':
-        setINN(value);
+      case 'position':
+        setPosition(value);
         break;
       default:
         break;
     }
   };
 
-  const handleAddOrganization = (
-    id: number, 
+  const handleAddEmployee = (
+    id: number,
+    idDivision: number,
     closeModalHandler: () => {
       payload: undefined,
       type: string
     }) => {
-    if (!organizationName.trim() || !address.trim() || Number(INN) === 0) {
+    if (!FIO.trim() || !address.trim() || !position.trim()) {
       setError('too empty =(');
     }
-    else if (Number.isNaN(Number(INN)) || INN.length !== 10) {
-      setError('Please, Provide valid detials!');
-    }
     else {
-      fetchAddOrganization(organizationName, address, Number(INN));
+      fetchAddEmployee(idDivision, FIO, address, position);
       closeModalHandler();
     }
 
@@ -48,10 +46,10 @@ export const useAddOrganization = () => {
 
   return {
     handleInputChange,
-    handleAddOrganization,
+    handleAddEmployee,
     error,
-    organizationName,
+    FIO,
     address,
-    INN
+    position
   };
 };

@@ -4,6 +4,14 @@ import { openModal } from 'src/models/modal/slice';
 export const useDivisions = () => {
   const dispatch = useAppDispatch();
 
+  const handleAddModal = () => {
+    dispatch(openModal({
+      componentName: 'Division',
+      typeOfModal: 'AddModal',
+      componentId: null!
+    }))
+  };
+
   const handleChangeModal = (id: number) => {
     dispatch(openModal({
       componentName: 'Division',
@@ -22,6 +30,7 @@ export const useDivisions = () => {
 
   return {
     dispatch,
+    handleAddModal,
     handleChangeModal,
     handleDeleteModal
   };

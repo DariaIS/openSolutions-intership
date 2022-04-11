@@ -1,11 +1,11 @@
-export const fetchAddDivision = (id_organization: string, name: string, phone: number) => {
-  fetch(`http://127.0.0.1:8080/organization/`, {
+export const fetchAddDivision = (organizationId: number, name: string, phone: number) => {
+  fetch(`http://127.0.0.1:8080/division/`, {
     headers:  {
       'Content-type': 'application/json',
       'Accept': 'application/json',
     },
     method: "POST",
-    body: JSON.stringify({id_organization, name, phone})
+    body: JSON.stringify({ id_organization: organizationId, name, phone })
   })
     .then((Response) => {
       console.log(Response);

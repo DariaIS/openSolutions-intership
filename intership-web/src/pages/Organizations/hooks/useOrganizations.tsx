@@ -4,11 +4,11 @@ import { openModal } from 'src/models/modal/slice';
 export const useOrganizations = () => {
   const dispatch = useAppDispatch();
 
-  const handleAddModal = (id: number) => {
+  const handleAddModal = () => {
     dispatch(openModal({
       componentName: 'Organization',
       typeOfModal: 'AddModal',
-      componentId: id
+      componentId: null!
     }))
   };
 

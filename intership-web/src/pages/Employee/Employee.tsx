@@ -17,7 +17,7 @@ import { useEmployee } from './hooks/useEmployee';
 
 export const Employee: React.FC = () => {
   const { employeeList, isLoading, error } = useAppSelector(selectEmployee);
-  const { dispatch, handleChangeModal, handleDeleteModal } = useEmployee();
+  const { dispatch,  handleAddModal, handleChangeModal, handleDeleteModal } = useEmployee();
   const navigate = useNavigate();
   const { organizationId, divisionId } = useParams();
 
@@ -39,6 +39,7 @@ export const Employee: React.FC = () => {
         {error && <h1>{error}</h1>}
         {employeeList.length > 0 &&
           <div>
+            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Employee</a>
             <table>
               <thead>
                 <tr>
@@ -61,7 +62,6 @@ export const Employee: React.FC = () => {
                             <td>{elem.address}</td>
                             <td>{elem.position}</td>
                             <td>
-                              <a href="#">add</a>
                               <a 
                                 onClick={() => handleChangeModal(elem.id)} 
                                 onKeyDown={() => handleChangeModal(elem.id)} 
