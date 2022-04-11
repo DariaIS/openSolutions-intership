@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchOrganizations } from './action';
+import { fetchOrganizations } from './actions/fetchOrganizations';
 import { IOrganization } from './IOrganization';
 
 type IOrganizationsState = { 
@@ -19,11 +19,14 @@ export const organizationsSlice = createSlice({
   name: 'organizations',
   initialState,
   reducers: {
-    addOrganization: (state, action: PayloadAction<IOrganization>) => {
-      state.organizationsList = [...state.organizationsList, action.payload];
-    },
-    removeOrganization: (state, action: PayloadAction<number>) => {
+    deleteOrganization: (state, action: PayloadAction<number>) => {
       state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
+    },
+    changeOrganization: (state, action: PayloadAction<IOrganization>) => {
+      const organization = state.organizationsList.find(elem => elem.id === action.payload.id)!;
+      organization.name = action.payload.name;
+      organization.address = action.payload.address;
+      organization.INN = action.payload.INN;
     }
   },
   extraReducers: {
@@ -42,6 +45,6 @@ export const organizationsSlice = createSlice({
   }
 });
 
-export const { addOrganization, removeOrganization } = organizationsSlice.actions;
+export const { deleteOrganization, changeOrganization } = organizationsSlice.actions;
 export const selectOrganizations = (state: { organizations: IOrganizationsState; }) => state.organizations;
 export default organizationsSlice.reducer;

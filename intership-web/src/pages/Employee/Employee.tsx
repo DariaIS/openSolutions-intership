@@ -9,21 +9,22 @@ import { Button } from 'Common/UI/Button';
 import { Navigation } from 'src/components/Navigation';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 
-import { selectDivisions } from 'src/models/divisions/slice';
-import { fetchDivisions } from 'src/models/divisions/actions/fetchDivisions';
+import { selectEmployee } from 'src/models/employee/slice';
+import { fetchEmployee } from 'src/models/employee/actions/fetchEmployee';
 
 import { useAppSelector } from 'src/hooks/index';
-import { useDivisions } from './hooks/useDivisions';
+import { useEmployee } from './hooks/useEmployee';
 
-export const Divisions: React.FC = () => {
-  const { divisionsList, isLoading, error } = useAppSelector(selectDivisions);
-  const { dispatch, handleAddModal, handleChangeModal, handleDeleteModal } = useDivisions();
+export const Employee: React.FC = () => {
+  const { employeeList, isLoading, error } = useAppSelector(selectEmployee);
+  const { dispatch,  handleAddModal, handleChangeModal, handleDeleteModal } = useEmployee();
   const navigate = useNavigate();
-  const { organizationId } = useParams();
+  const { organizationId, divisionId } = useParams();
+
 
   useEffect(() => {
-    if (typeof organizationId === "string") {
-      dispatch<any>(fetchDivisions(Number.parseInt(organizationId, 10)));
+    if (typeof divisionId === "string") {
+      dispatch<any>(fetchEmployee(Number.parseInt(divisionId, 10)));
     }
   }, []);
 
@@ -31,40 +32,36 @@ export const Divisions: React.FC = () => {
     <ProtectedRoute>
       <div>
         <Navigation/>
-        <Button onClick={() => navigate(`/organizations`)}>Back</Button>
+        <Button onClick={() => navigate(`/organizations/${organizationId}`)}>Back</Button>
         <h1>Organization - { organizationId } </h1>
+        <h2>Division - { divisionId } </h2>
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
-        {divisionsList.length > 0 &&
+        {employeeList.length > 0 &&
           <div>
-            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Division</a>
+            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Employee</a>
             <table>
               <thead>
                 <tr>
                     <th>id</th>
-                    <th>id_organization</th>
-                    <th>name</th>
-                    <th>phone</th>
+                    <th>id_division</th>
+                    <th>FIO</th>
+                    <th>address</th>
+                    <th>position</th>
                     <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  Object.values(divisionsList).map((elem) => {
+                  Object.values(employeeList).map((elem) => {
                     return (
                         <tr key={elem.id}>
                             <td>{elem.id}</td>
-                            <td>{organizationId}</td>
-                            <td>{elem.name}</td>
-                            <td>{elem.phone}</td>
+                            <td>{divisionId}</td>
+                            <td>{elem.FIO}</td>
+                            <td>{elem.address}</td>
+                            <td>{elem.position}</td>
                             <td>
-                              <a 
-                                onClick={() => navigate(`/organizations/${organizationId}/${elem.id}`)} 
-                                onKeyDown={() => navigate(`/organizations/${organizationId}/${elem.id}`)}
-                                role='button' 
-                                tabIndex={0}>
-                                  more
-                              </a>
                               <a 
                                 onClick={() => handleChangeModal(elem.id)} 
                                 onKeyDown={() => handleChangeModal(elem.id)} 
@@ -74,7 +71,7 @@ export const Divisions: React.FC = () => {
                               </a>
                               <a 
                                 onClick={() => handleDeleteModal(elem.id)} 
-                                onKeyDown={() => handleDeleteModal(elem.id)}
+                                onKeyDown={() => handleDeleteModal(elem.id)} 
                                 role='button' 
                                 tabIndex={0}>
                                   delete

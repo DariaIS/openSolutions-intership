@@ -1,6 +1,6 @@
 export type IOrganization = { 
   id: number,
-  name: string
+  name: string,
   address: string,
   INN: number
 };  

@@ -1,18 +1,14 @@
 import { ChangeEventHandler, useState } from 'react';
 
 import { useAppDispatch } from '../../../hooks/index';
-import { fetchSignIn } from '../../../models/authorize/action';
+import { fetchAuthorize } from '../../../models/authorize/action';
 
-type Props = {
-  anyProp?: any;
-};
-
-export const useSignIn = (props: Props) => {
+export const useAuthorize = () => {
   const [error, setError] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChangeSingIn: ChangeEventHandler<HTMLInputElement> = ({
+  const handleChangeAuthorize: ChangeEventHandler<HTMLInputElement> = ({
     target: { value, placeholder },
   }) => {
     if (placeholder === 'login') {
@@ -25,20 +21,20 @@ export const useSignIn = (props: Props) => {
 
   const dispatch = useAppDispatch();
 
-  const handleSignIn = () => {
+  const handleAuthorize = () => {
     if (!login.trim() || !password.trim()) {
       setError('too empty =(');
     }
     else {
-      dispatch<any>(fetchSignIn(login, password, setError));
+      dispatch<any>(fetchAuthorize(login, password, setError));
     }
   };
 
   return {
-    handleChangeSingIn,
-    handleSignIn,
-    error,
+    handleChangeAuthorize,
+    handleAuthorize,
     login,
     password,
+    error
   };
 };

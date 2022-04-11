@@ -1,13 +1,26 @@
 import React from 'react';
 
-type Props = {
-  componentName: string
-};
+import { IActionModal } from '../IActionModal';
+import { ChangeOrganization } from './Organization';
+import { ChangeDivision } from './Division';
+import { ChangeEmployee } from './Employee';
 
-export const ChangeModal: React.FC<Props> = () => {
+export const ChangeModal: React.FC<IActionModal> = ({ componentName, componentId, closeModalHandler }) => {
+  
   return (
-    <div>
-      this is change modal
+    <div> 
+      {
+        componentName === 'Organization' &&
+        <ChangeOrganization id={componentId} closeModalHandler={closeModalHandler}/>
+      }
+      {
+        componentName === 'Division' &&
+        <ChangeDivision id={componentId} closeModalHandler={closeModalHandler}/>
+      }
+      {
+        componentName === 'Employee' &&
+        <ChangeEmployee id={componentId} closeModalHandler={closeModalHandler}/>
+      }
     </div>
   );
 };

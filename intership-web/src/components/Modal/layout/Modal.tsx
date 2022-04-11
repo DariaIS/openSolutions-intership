@@ -2,7 +2,7 @@ import React from 'react';
 
 import s from './styles.module.scss';
 
-type Props = {
+type IModal = {
   isOpen: boolean,
   closeModalHandler: () => {
     payload: undefined,
@@ -10,7 +10,7 @@ type Props = {
   }
 };
 
-export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) => {
+export const Modal: React.FC<IModal> = ({ children, isOpen, closeModalHandler }) => {
   return (
     <>
       <div
@@ -21,15 +21,6 @@ export const Modal: React.FC<Props> = ({ children, isOpen, closeModalHandler }) 
         className={`${s.backDrop} ${isOpen ? s.show : s.hide}`}
       />
       <div className={`${s.сontainer} ${isOpen ? s.show : s.hide}`}>
-        <a
-          onClick={closeModalHandler}
-          onKeyDown={closeModalHandler}
-          role="button"
-          tabIndex={0}
-          className={s.closeButton} 
-        >
-          close
-        </a>
         <div className={s.content}>{children}</div>
       </div>
     </>

@@ -1,10 +1,11 @@
 /* eslint-disable no-extra-semi */
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IOrganization } from './IOrganization'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { IOrganization } from '../IOrganization';
 
 export const fetchOrganizations = createAsyncThunk(
-  'organizations/fetchall',
+  'organizations/fetchOrganizations',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get<IOrganization[]>('http://127.0.0.1:8080/organization');

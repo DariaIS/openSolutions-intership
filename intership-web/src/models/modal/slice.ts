@@ -3,19 +3,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type IModal = { 
   componentName: string,
-  // childrenProps: object
+  typeOfModal: string,
+  componentId: number
 };
 
 type IModalState = { 
   isOpen: boolean,
   componentName: string,
-  // childrenProps: object
+  typeOfModal: string,
+  componentId: number
 };
 
 const initialState: IModalState = {
   isOpen: false,
   componentName: null!,
-  // childrenProps: {}
+  typeOfModal: null!,
+  componentId: null!
 };
 
 export const modalSlice = createSlice({
@@ -25,11 +28,14 @@ export const modalSlice = createSlice({
     openModal: (state, action: PayloadAction<IModal>) => {
       state.isOpen = true;
       state.componentName = action.payload.componentName;
-      // state.childrenProps = action.payload.childrenProps;
+      state.typeOfModal = action.payload.typeOfModal;
+      state.componentId = action.payload.componentId;
     },
     closeModal: (state) => {
       state.isOpen = false;
       state.componentName = null!;
+      state.typeOfModal = null!;
+      state.componentId = null!;
     }
   },
 });
