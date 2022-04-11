@@ -23,9 +23,10 @@ export const organizationsSlice = createSlice({
       state.organizationsList = state.organizationsList.filter(elem => elem.id !== action.payload);
     },
     changeOrganization: (state, action: PayloadAction<IOrganization>) => {
-      state.organizationsList[action.payload.id].name = action.payload.name;
-      state.organizationsList[action.payload.id].address = action.payload.address;
-      state.organizationsList[action.payload.id].INN = action.payload.INN;
+      const organization = state.organizationsList.find(elem => elem.id === action.payload.id)!;
+      organization.name = action.payload.name;
+      organization.address = action.payload.address;
+      organization.INN = action.payload.INN;
     }
   },
   extraReducers: {

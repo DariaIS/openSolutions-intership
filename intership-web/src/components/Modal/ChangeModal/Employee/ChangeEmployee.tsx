@@ -16,6 +16,8 @@ type Props = {
 export const ChangeEmployee: React.FC<Props> = ({ id, closeModalHandler}) => {
   const { handleInputChange, handleChangeEmployee, error, FIO, address, position } = useChangeEmployee();
   const { organizationId, divisionId } = useParams();
+  console.log(organizationId)
+  console.log(divisionId)
   
   return (
     <div>
@@ -29,7 +31,7 @@ export const ChangeEmployee: React.FC<Props> = ({ id, closeModalHandler}) => {
 
       <Input name='position' type="text" value={position} onChange={handleInputChange} />
       <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleChangeEmployee(id, Number(organizationId), closeModalHandler)}>Change</Button>
+      <Button onClick={() => handleChangeEmployee(id, Number(divisionId), closeModalHandler)}>Change</Button>
     </div>
   );
 };

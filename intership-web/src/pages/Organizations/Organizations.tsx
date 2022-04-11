@@ -58,7 +58,6 @@ export const Organizations: React.FC = () => {
                                 tabIndex={0}>
                                   more
                               </a>
-                              {/* <Link to={`/organizations/${elem.id}`}>more</Link> */}
                               <a 
                                 onClick={() => handleChangeModal(elem.id)} 
                                 onKeyDown={() => handleChangeModal(elem.id)} 

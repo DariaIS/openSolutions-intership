@@ -23,9 +23,10 @@ export const employeeSlice = createSlice({
       state.employeeList = state.employeeList.filter(elem => elem.id !== action.payload);
     },
     changeEmployee: (state, action: PayloadAction<IEmployee>) => {
-      state.employeeList[action.payload.id].FIO = action.payload.FIO;
-      state.employeeList[action.payload.id].address = action.payload.address;
-      state.employeeList[action.payload.id].position = action.payload.position;
+      const employee = state.employeeList.find(elem => elem.id === action.payload.id)!;
+      employee.FIO = action.payload.FIO;
+      employee.address = action.payload.address;
+      employee.position = action.payload.position;
     }
   },
   extraReducers: {

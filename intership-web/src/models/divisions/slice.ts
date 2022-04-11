@@ -23,8 +23,9 @@ export const divisionsSlice = createSlice({
       state.divisionsList = state.divisionsList.filter(elem => elem.id !== action.payload);
     },
     changeDivision: (state, action: PayloadAction<IDivision>) => {
-      state.divisionsList[action.payload.id].name = action.payload.name;
-      state.divisionsList[action.payload.id].phone = action.payload.phone;
+      const division = state.divisionsList.find(elem => elem.id === action.payload.id)!;
+      division.name = action.payload.name;
+      division.phone = action.payload.phone;
     }
   },
   extraReducers: {
