@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
 
   return (
   <div>
-    <div className={s.headerContainer}>
+    <div className={s.container}>
       <a
         onClick={() => navigate(`/`)} 
         onKeyDown={() => navigate(`/`)}
