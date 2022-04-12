@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ModalManager } from 'src/components/Modal';
 
-import { Navigation } from 'src/components/Navigation';
+import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 
 import { selectOrganizations } from 'src/models/organizations/slice';
@@ -25,7 +25,7 @@ export const Organizations: React.FC = () => {
   return (
     <ProtectedRoute>
       <div>
-        <Navigation/>
+        <Header/>
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
         {organizationsList && 

@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ModalManager } from 'src/components/Modal';
 import { Button } from 'Common/UI/Button';
 
-import { Navigation } from 'src/components/Navigation';
+import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 
 import { selectDivisions } from 'src/models/divisions/slice';
@@ -30,7 +30,7 @@ export const Divisions: React.FC = () => {
   return (
     <ProtectedRoute>
       <div>
-        <Navigation/>
+        <Header/>
         <Button onClick={() => navigate(`/organizations`)}>Back</Button>
         <h1>Organization - { organizationId } </h1>
         {isLoading && <h1>Loading...</h1>}

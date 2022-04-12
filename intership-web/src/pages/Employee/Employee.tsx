@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ModalManager } from 'src/components/Modal';
 import { Button } from 'Common/UI/Button';
 
-import { Navigation } from 'src/components/Navigation';
+import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 
 import { selectEmployee } from 'src/models/employee/slice';
@@ -31,7 +31,7 @@ export const Employee: React.FC = () => {
   return (
     <ProtectedRoute>
       <div>
-        <Navigation/>
+        <Header/>
         <Button onClick={() => navigate(`/organizations/${organizationId}`)}>Back</Button>
         <h1>Organization - { organizationId } </h1>
         <h2>Division - { divisionId } </h2>

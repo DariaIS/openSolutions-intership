@@ -1,3 +1,17 @@
-html {
-  --header-height: 80px;
+html {  
+  --white: #fff;
+
+  --gray-light: #E6E6E6;
+  --gray: #C4C4C4;
+  --gray-dark: #AEAEAE;
+  --gray-darken: #6A757C;
+  --black: #000000;
+
+  --color-primary: #0085F9;
+  --color-secondary: #E2F9FF;
+  --color-danger: #911F35;
+  --color-danger-bg: #FDD7DA;
+  --color-danger-border: #FCC6CB;
+
+  --font-size: 1rem; 
 }

@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: var(--color-primary);
+}
+
+.logo {
+  cursor: pointer;
+  display: block;
+  line-height: 0;
+}
+
+.logoImg {
+  width: 33px;
+  height: 32px;
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px 13px;
+  font-size: var(--font-size);
+  border: 0;
+  border-radius: 5px;
+  font-family: 'Roboto';
+  transition: 0.3s;
+
+  &:hover {
+    filter: brightness(90%);
+  }
+}
