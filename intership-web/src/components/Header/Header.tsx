@@ -17,18 +17,18 @@ export const Header: React.FC = () => {
   };
 
   return (
-  <div>
-    <div className={s.container}>
-      <a
-        onClick={() => navigate(`/`)} 
-        onKeyDown={() => navigate(`/`)}
-        role='link' 
-        tabIndex={0}
-        className={s.logo}>
-          <Logo className={s.logoImg} viewBox='0, 0, 88, 88'/>
-      </a>
-      <Button className={s.button} onClick={handleLogout}>Logout</Button>
+    <div>
+      <div className={s.container}>
+        <a
+          onClick={() => navigate(`/`)} 
+          onKeyDown={() => navigate(`/`)}
+          role='link' 
+          tabIndex={0}
+          className={s.logo}>
+            <Logo className={s.logoIcon} viewBox='0, 0, 88, 88'/>
+        </a>
+        <Button buttonStyle='' className={s.button} onClick={handleLogout}>Logout</Button>
+      </div>
     </div>
-  </div>
-);
+  );
 };

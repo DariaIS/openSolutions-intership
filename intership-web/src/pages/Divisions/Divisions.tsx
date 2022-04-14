@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ModalManager } from 'src/components/Modal';
 import { Button } from 'Common/UI/Button';
-
+import { ModalManager } from 'src/components/Modal';
 import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
+import { ComponentTable } from 'Src/components/ComponentTable';
 
 import { selectDivisions } from 'src/models/divisions/slice';
 import { fetchDivisions } from 'src/models/divisions/actions/fetchDivisions';
@@ -15,9 +14,11 @@ import { fetchDivisions } from 'src/models/divisions/actions/fetchDivisions';
 import { useAppSelector } from 'src/hooks/index';
 import { useDivisions } from './hooks/useDivisions';
 
+import s from './divisions.module.scss';
+
 export const Divisions: React.FC = () => {
   const { divisionsList, isLoading, error } = useAppSelector(selectDivisions);
-  const { dispatch, handleAddModal, handleChangeModal, handleDeleteModal } = useDivisions();
+  const { dispatch, handleAddModal } = useDivisions();
   const navigate = useNavigate();
   const { organizationId } = useParams();
 
@@ -29,63 +30,20 @@ export const Divisions: React.FC = () => {
 
   return (
     <ProtectedRoute>
-      <div>
         <Header/>
-        <Button onClick={() => navigate(`/organizations`)}>Back</Button>
-        <h1>Organization - { organizationId } </h1>
+        <div className='pageContainer'>
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
+        {!error && 
+          <div className={s.buttonsSection}>
+            <Button buttonStyle='back' onClick={() => navigate(`/organizations`)}>Back</Button>
+            <Button buttonStyle='add' onClick={handleAddModal}>Add Division</Button>
+          </div> 
+        }
         {divisionsList.length > 0 &&
           <div>
-            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Division</a>
-            <table>
-              <thead>
-                <tr>
-                    <th>id</th>
-                    <th>id_organization</th>
-                    <th>name</th>
-                    <th>phone</th>
-                    <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  Object.values(divisionsList).map((elem) => {
-                    return (
-                        <tr key={elem.id}>
-                            <td>{elem.id}</td>
-                            <td>{organizationId}</td>
-                            <td>{elem.name}</td>
-                            <td>{elem.phone}</td>
-                            <td>
-                              <a 
-                                onClick={() => navigate(`/organizations/${organizationId}/${elem.id}`)} 
-                                onKeyDown={() => navigate(`/organizations/${organizationId}/${elem.id}`)}
-                                role='button' 
-                                tabIndex={0}>
-                                  more
-                              </a>
-                              <a 
-                                onClick={() => handleChangeModal(elem.id)} 
-                                onKeyDown={() => handleChangeModal(elem.id)} 
-                                role='button' 
-                                tabIndex={0}>
-                                  change
-                              </a>
-                              <a 
-                                onClick={() => handleDeleteModal(elem.id)} 
-                                onKeyDown={() => handleDeleteModal(elem.id)}
-                                role='button' 
-                                tabIndex={0}>
-                                  delete
-                              </a>
-                            </td>
-                        </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
+            {console.log(divisionsList)}
+            <ComponentTable componentName='Divisions' component={divisionsList}/>
             <ModalManager />
           </div>
         }

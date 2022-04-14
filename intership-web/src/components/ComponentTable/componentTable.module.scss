@@ -1,0 +1,45 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thead {
+  border-top: 1px solid var(--gray);
+  border-bottom: 2px solid var(--gray-dark);
+  font-weight: 600;
+}
+
+.tr {
+  text-align: left;
+
+  &:not(:only-of-type):not(:last-of-type) {
+    border-bottom: 1px solid var(--gray);
+  }
+}
+
+.th, .td {
+  padding: 15px;
+  font-family: 'Roboto';
+}
+
+.action {
+  cursor: pointer;
+  &:not(:last-of-type) {
+    margin-right: 13px;
+  }
+}
+
+.moreIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.changeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.deleteIcon {
+  width: 14px;
+  height: 18px;
+}

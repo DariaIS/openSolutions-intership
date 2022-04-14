@@ -27,8 +27,8 @@ export const AddDivision: React.FC<Props> = ({ id, closeModalHandler}) => {
       <p>Division&apos;s Phone</p>
       <Input name='phone' type="text" value={phone} onChange={handleInputChange} />            
 
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleAddDivision(id, Number(organizationId), closeModalHandler)}>Add</Button>
+      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
+      <Button buttonStyle='' onClick={() => handleAddDivision(id, Number(organizationId), closeModalHandler)}>Add</Button>
     </div>
   );
 };

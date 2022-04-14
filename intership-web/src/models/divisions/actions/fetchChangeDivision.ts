@@ -17,7 +17,7 @@ export const fetchChangeDivision = ( id: number, organizationId: number, name: s
       .then((Response) => {
         console.log(Response);
         console.log(name);
-        dispatch(changeDivision({ id, organizationId, name, phone }));
+        dispatch(changeDivision({ id, id_organization: organizationId, name, phone }));
       })
       .catch((error) => {
         console.log(error);

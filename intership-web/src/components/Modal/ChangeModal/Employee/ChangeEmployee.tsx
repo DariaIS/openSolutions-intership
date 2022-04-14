@@ -30,8 +30,8 @@ export const ChangeEmployee: React.FC<Props> = ({ id, closeModalHandler}) => {
       <p>Employee&apos;s position</p>
 
       <Input name='position' type="text" value={position} onChange={handleInputChange} />
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleChangeEmployee(id, Number(divisionId), closeModalHandler)}>Change</Button>
+      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
+      <Button buttonStyle='' onClick={() => handleChangeEmployee(id, Number(divisionId), closeModalHandler)}>Change</Button>
     </div>
   );
 };

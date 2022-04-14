@@ -27,8 +27,8 @@ export const ChangeDivision: React.FC<Props> = ({ id, closeModalHandler}) => {
       <p>Division&apos;s Phone</p>
       <Input name='phone' type="text" value={phone} onChange={handleInputChange} />            
 
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleChangeDivision(id, Number(organizationId), closeModalHandler)}>Change</Button>
+      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
+      <Button buttonStyle='' onClick={() => handleChangeDivision(id, Number(organizationId), closeModalHandler)}>Change</Button>
     </div>
   );
 };

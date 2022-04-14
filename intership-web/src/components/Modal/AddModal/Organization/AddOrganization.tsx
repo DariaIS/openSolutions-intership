@@ -26,8 +26,8 @@ export const AddOrganization: React.FC<Props> = ({ id, closeModalHandler }) => {
       <p>Organization&apos;s INN</p>
 
       <Input name='INN' type="text" value={INN} onChange={handleInputChange} />
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleAddOrganization(id, closeModalHandler)}>Add</Button>
+      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
+      <Button buttonStyle='' onClick={() => handleAddOrganization(id, closeModalHandler)}>Add</Button>
     </div>
   );
 };

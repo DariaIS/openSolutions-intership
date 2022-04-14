@@ -44,3 +44,9 @@ code {
   font-weight: 600;
   font-style: normal;
 }
+
+.pageContainer {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1110px;
+}

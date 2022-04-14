@@ -34,8 +34,8 @@ export const DeleteModal: React.FC<IActionModal> = ({ componentName, componentId
   return (
     <div>
       <p>Delete {componentName} component with id - {componentId}?</p>
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={handleDelete}>Delete</Button>
+      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
+      <Button buttonStyle='' onClick={handleDelete}>Delete</Button>
     </div>
   );
 };

@@ -25,7 +25,7 @@ export const Authorize: React.FC = () => {
           </div>
           
           {error.length > 0 && <div className={s.error}>{error}</div>}
-          <Button onClick={handleAuthorize} className={s.button}>Sign in</Button>
+          <Button buttonStyle='' onClick={handleAuthorize} className={s.button}>Sign in</Button>
           <span className={s.dates}>2020-2021</span>
         </form>
       </div>

@@ -12,26 +12,8 @@ export const useDivisions = () => {
     }))
   };
 
-  const handleChangeModal = (id: number) => {
-    dispatch(openModal({
-      componentName: 'Division',
-      typeOfModal: 'ChangeModal',
-      componentId: id
-    }))
-  };
-
-  const handleDeleteModal = (id: number) => {
-    dispatch(openModal({
-      componentName: 'Division',
-      typeOfModal: 'DeleteModal',
-      componentId: id
-    }))
-  };
-
   return {
     dispatch,
-    handleAddModal,
-    handleChangeModal,
-    handleDeleteModal
+    handleAddModal
   };
 };
