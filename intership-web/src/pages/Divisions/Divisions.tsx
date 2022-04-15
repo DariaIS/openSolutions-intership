@@ -42,7 +42,6 @@ export const Divisions: React.FC = () => {
         }
         {divisionsList.length > 0 &&
           <div>
-            {console.log(divisionsList)}
             <ComponentTable componentName='Divisions' component={divisionsList}/>
             <ModalManager />
           </div>

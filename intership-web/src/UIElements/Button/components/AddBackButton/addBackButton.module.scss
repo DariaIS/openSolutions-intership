@@ -15,18 +15,16 @@
     color: var(--color-primary);
     background-color: var(--white);
   }
-
-  .backIcon path {
+  
+  .icon path {
     transition: 0.3s;
   }
 
-  &:hover .backIcon path {
+  &:hover .icon path {
     fill: var(--color-primary);
   }
 }
 
-.backIcon {
-  width: 16px;
-  height: 16px;
+.icon {
   margin-right: 2px;
 }

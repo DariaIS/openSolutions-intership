@@ -10,9 +10,11 @@ import { ComponentTable } from 'src/components/ComponentTable';
 import { selectOrganizations } from 'src/models/organizations/slice';
 import { fetchOrganizations } from 'src/models/organizations/actions/fetchOrganizations';
 
-
 import { useAppSelector } from 'src/hooks/index';
 import { useOrganizations } from './hooks/useOrganizations';
+
+import s from './organizations.module.scss';
+
 
 export const Organizations: React.FC = () => {
   const { organizationsList, isLoading, error } = useAppSelector(selectOrganizations);
@@ -28,7 +30,11 @@ export const Organizations: React.FC = () => {
         <div className='pageContainer'>
           {isLoading && <h1>Loading...</h1>}
           {error && <h1>{error}</h1>}
-          {!error && <Button buttonStyle='add' onClick={handleAddModal} onKeyDown={handleAddModal}>Add Organization</Button>}
+          {!error && 
+            <div className={s.buttonSection}>
+              <Button buttonStyle='add' onClick={handleAddModal} onKeyDown={handleAddModal}>Add Organization</Button>
+            </div>
+          }
           {organizationsList.length > 0 && 
             <div>
               <ComponentTable componentName='Organization' component={organizationsList}/>

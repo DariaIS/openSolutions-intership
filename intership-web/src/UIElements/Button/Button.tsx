@@ -1,7 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
-import { AddButton } from './components/AddButton';
-import { BackButton } from './components/BackButton';
+import { AddBackButton } from './components/AddBackButton';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   buttonStyle: string
@@ -10,16 +9,11 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button: React.FC<Props> = ({ children, buttonStyle, ...rest }) => {
   switch (buttonStyle) {
     case 'add':
-      return ( 
-        <AddButton {...rest}>
-          {children}
-        </AddButton>
-      );
     case 'back':
-      return (
-        <BackButton {...rest}>
+      return ( 
+        <AddBackButton buttonStyle={buttonStyle} {...rest}>
           {children}
-        </BackButton>
+        </AddBackButton>
       );
     default:
       return (

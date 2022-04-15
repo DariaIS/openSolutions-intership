@@ -36,7 +36,7 @@ export const Employee: React.FC = () => {
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
         {!error &&           
-          <div>
+          <div className={s.buttonsSection}>
             <Button buttonStyle='back' onClick={() => navigate(`/organizations/${organizationId}`)}>Back</Button>
             <Button buttonStyle='add' onClick={handleAddModal}>Add Employee</Button>
           </div>

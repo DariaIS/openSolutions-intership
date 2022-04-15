@@ -30,7 +30,8 @@ export const userSlice = createSlice({
       state.isPermanent = action.payload.isPermanent;
     },
     logout: (state) => {
-      state.userData = null!;
+      state.userData.login = null!;
+      state.userData.password = null!;
       state.isLogin = false;
       state.isPermanent = false;
     }
