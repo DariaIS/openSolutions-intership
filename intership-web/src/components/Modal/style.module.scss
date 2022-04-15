@@ -1,0 +1,32 @@
+.elements {
+  display: flex;
+  flex-direction: column;
+}
+
+.title, .inputTitle {
+  font-family: 'Roboto';
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 16px;
+  margin: 0;
+  border-bottom: 1px solid var(--gray);
+}
+
+.inputsSection {
+  padding: 16px 16px 32px 16px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.inputTitle {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.buttonsSection {
+  display: flex;
+  justify-content: end;
+  padding: 16px;
+}

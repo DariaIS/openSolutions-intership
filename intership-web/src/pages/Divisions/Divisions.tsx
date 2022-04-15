@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Button } from 'Common/UI/Button';
-import { ModalManager } from 'src/components/Modal';
+import { Modal } from 'src/components/Modal';
 import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 import { ComponentTable } from 'Src/components/ComponentTable';
@@ -43,7 +43,7 @@ export const Divisions: React.FC = () => {
         {divisionsList.length > 0 &&
           <div>
             <ComponentTable componentName='Divisions' component={divisionsList}/>
-            <ModalManager />
+            <Modal />
           </div>
         }
       </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import s from './styles.module.scss';
+import s from './modalTemplate.module.scss';
 
-type IModal = {
+type IModalTemplate = {
   isOpen: boolean,
   closeModalHandler: () => {
     payload: undefined,
@@ -10,7 +10,7 @@ type IModal = {
   }
 };
 
-export const Modal: React.FC<IModal> = ({ children, isOpen, closeModalHandler }) => {
+export const ModalTemplate: React.FC<IModalTemplate> = ({ children, isOpen, closeModalHandler }) => {
   return (
     <>
       <div
@@ -21,7 +21,9 @@ export const Modal: React.FC<IModal> = ({ children, isOpen, closeModalHandler })
         className={`${s.backDrop} ${isOpen ? s.show : s.hide}`}
       />
       <div className={`${s.сontainer} ${isOpen ? s.show : s.hide}`}>
-        <div className={s.content}>{children}</div>
+        <div className={s.content}>
+          {children}
+        </div>
       </div>
     </>
   );

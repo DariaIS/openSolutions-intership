@@ -24,12 +24,12 @@ export const ChangeEmployee: React.FC<Props> = ({ id, closeModalHandler}) => {
       <p>Change Employee</p>
       {error.length > 0 && <p>{error}</p>}
       <p>FIO</p>
-      <Input name='FIO' type="text" value={FIO} onChange={handleInputChange} />
+      <Input name='FIO' inputStyle='component' type="text" value={FIO} onChange={handleInputChange} />
       <p>Employee Address</p>
-      <Input name='address' type="text" value={address} onChange={handleInputChange} />            
+      <Input name='address' inputStyle='component' type="text" value={address} onChange={handleInputChange} />            
       <p>Employee&apos;s position</p>
 
-      <Input name='position' type="text" value={position} onChange={handleInputChange} />
+      <Input name='position' inputStyle='component' type="text" value={position} onChange={handleInputChange} />
       <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
       <Button buttonStyle='' onClick={() => handleChangeEmployee(id, Number(divisionId), closeModalHandler)}>Change</Button>
     </div>

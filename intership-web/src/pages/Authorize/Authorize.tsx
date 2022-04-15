@@ -17,10 +17,10 @@ export const Authorize: React.FC = () => {
         <Logo className={s.logo} viewBox='0, 0, 88, 88'/>
         <span className={s.pleaseText}>Please sign in</span>
         <form className={s.form}>
-          <Input className={s.input} type="text" value={login} onChange={handleChangeInput} placeholder="login" />
-          <Input className={s.input} type="password" value={password} onChange={handleChangeInput} placeholder="password" />
+          <Input inputStyle='signin' type="text" value={login} onChange={handleChangeInput} placeholder="login" />
+          <Input inputStyle='signin' type="password" value={password} onChange={handleChangeInput} placeholder="password" />
           <div className={s.checkbox}>
-            <Input className={s.checkboxInput} type="checkbox" onChange={handleChangeCheckbox} checked={isPermanent}/>
+            <Input className={s.checkboxInput} inputStyle='signin' type="checkbox" onChange={handleChangeCheckbox} checked={isPermanent}/>
             <span className={s.checkboxText}>Remember me</span>
           </div>
           

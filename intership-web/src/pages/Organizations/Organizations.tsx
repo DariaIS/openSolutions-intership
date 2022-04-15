@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 import { Button } from 'src/UIElements/Button';
-import { ModalManager } from 'src/components/Modal';
+import { Modal } from 'src/components/Modal';
 import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 import { ComponentTable } from 'src/components/ComponentTable';
@@ -38,7 +38,7 @@ export const Organizations: React.FC = () => {
           {organizationsList.length > 0 && 
             <div>
               <ComponentTable componentName='Organization' component={organizationsList}/>
-              <ModalManager />
+              <Modal />
             </div>
           }
       </div>

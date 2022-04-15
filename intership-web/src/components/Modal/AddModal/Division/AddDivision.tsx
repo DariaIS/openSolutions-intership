@@ -22,10 +22,10 @@ export const AddDivision: React.FC<Props> = ({ id, closeModalHandler}) => {
       <p>Add Division</p>
       {error.length > 0 && <p>{error}</p>}
       <p>Division Name</p>
-      <Input name='divisionName' type="text" value={divisionName} onChange={handleInputChange} />            
+      <Input name='divisionName' inputStyle='component' type="text" value={divisionName} onChange={handleInputChange} />            
       {/* <Input name='divisionName' type="text" value={divisionName} onChange={handleInputChange} /> */}
       <p>Division&apos;s Phone</p>
-      <Input name='phone' type="text" value={phone} onChange={handleInputChange} />            
+      <Input name='phone' inputStyle='component' type="text" value={phone} onChange={handleInputChange} />            
 
       <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
       <Button buttonStyle='' onClick={() => handleAddDivision(id, Number(organizationId), closeModalHandler)}>Add</Button>

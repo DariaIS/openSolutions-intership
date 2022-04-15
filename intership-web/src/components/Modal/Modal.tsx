@@ -2,7 +2,8 @@ import React from 'react';
 
 import { selectModal, closeModal } from '../../models/modal/slice';
 import { useAppSelector, useAppDispatch } from '../../hooks/index';
-import { Modal } from './layout/index';
+
+import { ModalTemplate } from './layout/index';
 import { AddModal } from './AddModal';
 import { DeleteModal } from './DeleteModal';
 import { ChangeModal } from './ChangeModal';
@@ -14,7 +15,7 @@ import { IActionModal } from './IActionModal';
 //   closeModalHandler: object
 // };
 
-export const ModalManager: React.FC = () => {
+export const Modal: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isOpen, componentName, typeOfModal, componentId } = useAppSelector(selectModal);
 
@@ -30,11 +31,8 @@ export const ModalManager: React.FC = () => {
   }
 
   return (
-    <Modal 
-        isOpen={isOpen}
-        closeModalHandler={closeModalHandler}
-    >
-        {renderComponent}
-    </Modal>
+    <ModalTemplate isOpen={isOpen} closeModalHandler={closeModalHandler}>
+      {renderComponent}
+    </ModalTemplate>
   );
 };
