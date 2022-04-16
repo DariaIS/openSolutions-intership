@@ -20,8 +20,8 @@ export const AddOrganization: React.FC<Props> = ({ id, closeModalHandler }) => {
   return (
     <div className={s.elements}>
       <h2 className={s.title}>Add Organization</h2>
+      {error.length > 0 && <div className={s.error}>{error}</div>}
       <div className={s.inputsSection}>
-        {error.length > 0 && <div className={s.error}>{error}</div>}
         <span className={s.inputTitle}>Organization Name</span>
         <Input name='name' inputStyle='component' type="text" value={organizationName} onChange={handleInputChange} />
         
@@ -32,8 +32,8 @@ export const AddOrganization: React.FC<Props> = ({ id, closeModalHandler }) => {
         <Input name='INN' inputStyle='component' type="text" value={INN} onChange={handleInputChange} />
       </div>
       <div className={s.buttonsSection}>
-        <Button buttonStyle='cancel' onClick={closeModalHandler}>Cancel</Button>
-        <Button buttonStyle='green' onClick={() => handleAddOrganization(id, closeModalHandler)}>Add</Button>
+        <Button buttonStyle='cancel' onClick={closeModalHandler}/>
+        <Button buttonStyle='accept' onClick={() => handleAddOrganization(id, closeModalHandler)}>Add</Button>
       </div>
     </div>
   );

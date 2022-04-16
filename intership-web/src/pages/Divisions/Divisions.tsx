@@ -42,7 +42,7 @@ export const Divisions: React.FC = () => {
         }
         {divisionsList.length > 0 &&
           <div>
-            <ComponentTable componentName='Divisions' component={divisionsList}/>
+            <ComponentTable componentName='Division' component={divisionsList}/>
             <Modal />
           </div>
         }

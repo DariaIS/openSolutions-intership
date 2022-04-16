@@ -9,6 +9,8 @@ import { fetchDeleteEmployee } from 'src/models/employee/actions/fetchDeleteEmpl
 
 import { IActionModal } from '../IActionModal';
 
+import s from '../style.module.scss';
+
 export const DeleteModal: React.FC<IActionModal> = ({ componentName, componentId, closeModalHandler }) => {
   const dispatch = useAppDispatch();
   
@@ -32,10 +34,12 @@ export const DeleteModal: React.FC<IActionModal> = ({ componentName, componentId
   };
 
   return (
-    <div>
-      <p>Delete {componentName} component with id - {componentId}?</p>
-      <Button buttonStyle='' onClick={closeModalHandler}>Cancel</Button>
-      <Button buttonStyle='' onClick={handleDelete}>Delete</Button>
+    <div className={s.elements}>
+      <h2 className={s.title}>Delete {componentName} with id - {componentId}?</h2>
+      <div className={s.buttonsSection}>
+        <Button buttonStyle='cancel' onClick={closeModalHandler} />
+        <Button buttonStyle='delete' onClick={handleDelete}>Delete</Button>
+      </div>
     </div>
   );
 };

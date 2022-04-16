@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 
 import { AddBackButton } from './components/AddBackButton';
 import { CancelButton } from './components/CancelButton';
-import { AcceptButton } from './components/AcceptButton';
+import { AcceptDeleteButton } from './components/AcceptDeleteButton';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   buttonStyle: string
@@ -19,15 +19,14 @@ export const Button: React.FC<Props> = ({ children, buttonStyle, ...rest }) => {
       );
       case 'cancel':
         return ( 
-          <CancelButton {...rest}>
-            {children}
-          </CancelButton>
+          <CancelButton {...rest}/>
         );
       case 'accept':
+      case 'delete':
         return ( 
-          <AcceptButton {...rest}>
+          <AcceptDeleteButton buttonStyle={buttonStyle} {...rest}>
             {children}
-          </AcceptButton>
+          </AcceptDeleteButton>
         );
     default:
       return (
