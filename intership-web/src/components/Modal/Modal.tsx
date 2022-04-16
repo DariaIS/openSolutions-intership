@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { selectModal, closeModal } from '../../models/modal/slice';
 import { useAppSelector, useAppDispatch } from '../../hooks/index';
@@ -31,8 +32,13 @@ export const Modal: React.FC = () => {
   }
 
   return (
-    <ModalTemplate isOpen={isOpen} closeModalHandler={closeModalHandler}>
-      {renderComponent}
-    </ModalTemplate>
-  );
+    <>
+    {ReactDOM.createPortal(
+      <ModalTemplate isOpen={isOpen} closeModalHandler={closeModalHandler}>
+        {renderComponent}
+      </ModalTemplate>,
+      document.querySelector('#portal')!
+    )}
+    </>
+  )
 };
