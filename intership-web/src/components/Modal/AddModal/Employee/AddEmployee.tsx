@@ -5,6 +5,8 @@ import { Button } from 'Common/UI/Button';
 import { Input } from 'Common/UI/Input';
 import { useAddEmployee } from './hooks/useAddEmployee';
 
+import s from '../../style.module.scss';
+
 type Props = { 
   id: number,
   closeModalHandler: () => {
@@ -18,18 +20,23 @@ export const AddEmployee: React.FC<Props> = ({ id, closeModalHandler}) => {
   const { organizationId, divisionId } = useParams();
   
   return (
-    <div>
-      <p>Add Employee</p>
-      {error.length > 0 && <p>{error}</p>}
-      <p>FIO</p>
-      <Input name='FIO' type="text" value={FIO} onChange={handleInputChange} />
-      <p>Employee Address</p>
-      <Input name='address' type="text" value={address} onChange={handleInputChange} />            
-      <p>Employee&apos;s position</p>
-
-      <Input name='position' type="text" value={position} onChange={handleInputChange} />
-      <Button onClick={closeModalHandler}>Cancel</Button>
-      <Button onClick={() => handleAddEmployee(id, Number(divisionId), closeModalHandler)}>Add</Button>
+    <div className={s.elements}>
+      <h2 className={s.title}>Add Employee</h2>
+      {error.length > 0 && <div className={s.error}>{error}</div>}
+      <div className={s.inputsSection}>
+        <span className={s.inputTitle}>FIO</span>
+        <Input name='FIO' inputStyle='component' type="text" value={FIO} onChange={handleInputChange} />
+        
+        <span className={s.inputTitle}>Employee Address</span>
+        <Input name='address' inputStyle='component' type="text" value={address} onChange={handleInputChange} />            
+        
+        <span className={s.inputTitle}>Employee&apos;s position</span>
+        <Input name='position' inputStyle='component' type="text" value={position} onChange={handleInputChange} />
+      </div>
+      <div className={s.buttonsSection}>
+        <Button buttonStyle='cancel' onClick={closeModalHandler}/>
+        <Button buttonStyle='accept' onClick={() => handleAddEmployee(id, Number(divisionId), closeModalHandler)}>Add</Button>
+      </div>
     </div>
   );
 };

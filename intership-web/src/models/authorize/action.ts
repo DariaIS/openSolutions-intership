@@ -5,10 +5,11 @@ import { AppDispatch } from '../store';
 type IfetchAuthorize = (
   login: string,
   password: string,
+  isPermanent: boolean,
   setError: Dispatch<SetStateAction<string>>
 ) => Dispatch<AppDispatch>;
 
-export const fetchAuthorize: IfetchAuthorize = (login, password, setError) => {
+export const fetchAuthorize: IfetchAuthorize = (login, password, isPermanent, setError) => {
   
   return (dispatch) => {
     fetch('http://127.0.0.1:8080/authorize', {
@@ -22,7 +23,7 @@ export const fetchAuthorize: IfetchAuthorize = (login, password, setError) => {
       .then((Response) => Response.json())
       .then((json) => {
         if (json.isLogin) {
-          dispatch(authorize({ login, password }));
+          dispatch(authorize({ login, password, isPermanent }));
         }
         else {
           setError('Incorrent login or password');

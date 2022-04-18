@@ -1,0 +1,30 @@
+.button {
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  background-color: var(--color-primary);
+  font-family: 'Roboto';
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--white);
+  }
+  
+  .icon path {
+    transition: 0.3s;
+  }
+
+  &:hover .icon path {
+    fill: var(--color-primary);
+  }
+}
+
+.icon {
+  margin-right: 2px;
+}

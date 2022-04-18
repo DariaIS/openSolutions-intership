@@ -1,6 +1,6 @@
 export type IDivision = { 
   id: number,
-  organizationId: number,
+  id_organization: number,
   name: string,
   phone: number
 };  

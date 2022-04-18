@@ -1,0 +1,24 @@
+.inputSignin, .inputComponent {
+  outline: none;
+  font-family: 'Roboto';
+}
+
+.inputSignin {
+  border: 1px solid var(--gray-light);
+  width: 251px;
+  padding: 12px 23px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.inputComponent {
+  border: 1px solid var(--gray-dark);
+  padding: 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 3px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 17px;
+  }
+}

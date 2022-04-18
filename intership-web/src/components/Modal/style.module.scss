@@ -1,0 +1,42 @@
+.elements {
+  display: flex;
+  flex-direction: column;
+}
+
+.title, .inputTitle {
+  font-family: 'Roboto';
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 16px;
+  margin: 0;
+  border-bottom: 1px solid var(--gray-dark);
+}
+
+.error {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  border-bottom: 1px solid var(--gray-dark);
+  color: var(--color-danger);
+  background-color: var(--color-danger-bg);
+  font-family: 'Roboto';
+}
+
+.inputsSection {
+  padding: 16px 16px 32px 16px;
+  border-bottom: 1px solid var(--gray-dark);
+}
+
+.inputTitle {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.buttonsSection {
+  display: flex;
+  justify-content: end;
+  padding: 16px;
+}

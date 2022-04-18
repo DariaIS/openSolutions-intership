@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ModalManager } from 'src/components/Modal';
 import { Button } from 'Common/UI/Button';
-
-import { Navigation } from 'src/components/Navigation';
+import { Modal } from 'src/components/Modal';
+import { Header } from 'src/components/Header';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
+import { ComponentTable } from 'Src/components/ComponentTable';
 
 import { selectEmployee } from 'src/models/employee/slice';
 import { fetchEmployee } from 'src/models/employee/actions/fetchEmployee';
@@ -15,9 +14,11 @@ import { fetchEmployee } from 'src/models/employee/actions/fetchEmployee';
 import { useAppSelector } from 'src/hooks/index';
 import { useEmployee } from './hooks/useEmployee';
 
+import s from './employee.module.scss';
+
 export const Employee: React.FC = () => {
   const { employeeList, isLoading, error } = useAppSelector(selectEmployee);
-  const { dispatch,  handleAddModal, handleChangeModal, handleDeleteModal } = useEmployee();
+  const { dispatch,  handleAddModal } = useEmployee();
   const navigate = useNavigate();
   const { organizationId, divisionId } = useParams();
 
@@ -30,60 +31,20 @@ export const Employee: React.FC = () => {
 
   return (
     <ProtectedRoute>
-      <div>
-        <Navigation/>
-        <Button onClick={() => navigate(`/organizations/${organizationId}`)}>Back</Button>
-        <h1>Organization - { organizationId } </h1>
-        <h2>Division - { divisionId } </h2>
+        <Header/>
+        <div className='pageContainer'>
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
+        {!error &&           
+          <div className={s.buttonsSection}>
+            <Button buttonStyle='back' onClick={() => navigate(`/organizations/${organizationId}`)}>Back</Button>
+            <Button buttonStyle='add' onClick={handleAddModal}>Add Employee</Button>
+          </div>
+        }
         {employeeList.length > 0 &&
           <div>
-            <a onClick={handleAddModal} onKeyDown={handleAddModal} role='button' tabIndex={0}>Add Employee</a>
-            <table>
-              <thead>
-                <tr>
-                    <th>id</th>
-                    <th>id_division</th>
-                    <th>FIO</th>
-                    <th>address</th>
-                    <th>position</th>
-                    <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  Object.values(employeeList).map((elem) => {
-                    return (
-                        <tr key={elem.id}>
-                            <td>{elem.id}</td>
-                            <td>{divisionId}</td>
-                            <td>{elem.FIO}</td>
-                            <td>{elem.address}</td>
-                            <td>{elem.position}</td>
-                            <td>
-                              <a 
-                                onClick={() => handleChangeModal(elem.id)} 
-                                onKeyDown={() => handleChangeModal(elem.id)} 
-                                role='button' 
-                                tabIndex={0}>
-                                  change
-                              </a>
-                              <a 
-                                onClick={() => handleDeleteModal(elem.id)} 
-                                onKeyDown={() => handleDeleteModal(elem.id)} 
-                                role='button' 
-                                tabIndex={0}>
-                                  delete
-                              </a>
-                            </td>
-                        </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
-            <ModalManager />
+            <ComponentTable componentName='Employee' component={employeeList}/>
+            <Modal />
           </div>
         }
       </div>

@@ -1,0 +1,29 @@
+.button {
+  cursor: pointer;
+  padding: 9px 13px;
+  border-radius: 3px;
+  font-family: 'Roboto';
+  transition: 0.3s;
+}
+
+.accept {
+  background-color: var(--color-accept);
+  border: 1px solid  var(--color-accept);
+  color: var(--white);
+
+  &:hover {
+      color: var(--color-accept);
+      background-color: var(--white);
+    }
+}
+
+.delete {
+  background-color: var(--color-danger);
+  border: 1px solid  var(--color-danger);
+  color: var(--white);
+
+  &:hover {
+      color: var(--color-danger);
+      background-color: var(--white);
+    }
+}
