@@ -17,7 +17,7 @@ export const fetchChangeEmployee = ( id: number, divisionId: number, FIO: string
     })
       .then((Response) => {
         console.log(Response);
-        dispatch(changeEmployee({ id, divisionId, FIO, address, position }));
+        dispatch(changeEmployee({ id, id_division: divisionId, FIO, address, position }));
       })
       .catch((error) => {
         console.log(error);

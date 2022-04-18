@@ -7,8 +7,9 @@ export const useAuthorize = () => {
   const [error, setError] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [isPermanent, setIsPermanent] = useState(false);
 
-  const handleChangeAuthorize: ChangeEventHandler<HTMLInputElement> = ({
+  const handleChangeInput: ChangeEventHandler<HTMLInputElement> = ({
     target: { value, placeholder },
   }) => {
     if (placeholder === 'login') {
@@ -19,6 +20,12 @@ export const useAuthorize = () => {
     }
   };
 
+  const handleChangeCheckbox: ChangeEventHandler<HTMLInputElement> = ({
+    target: { checked },
+  }) => {
+      setIsPermanent(checked);
+  };
+
   const dispatch = useAppDispatch();
 
   const handleAuthorize = () => {
@@ -26,15 +33,17 @@ export const useAuthorize = () => {
       setError('too empty =(');
     }
     else {
-      dispatch<any>(fetchAuthorize(login, password, setError));
+      dispatch<any>(fetchAuthorize(login, password, isPermanent, setError));
     }
   };
 
   return {
-    handleChangeAuthorize,
+    handleChangeInput,
+    handleChangeCheckbox,
     handleAuthorize,
     login,
     password,
+    isPermanent,
     error
   };
 };
